@@ -26,13 +26,12 @@ export default class NavbarSec extends Component {
 
     render() {
         const opacity = Math.min(this.state.currentScrollHeight / 1000,)
-
         return (
             <div>
-                <Navbar bg={'light'} expand={'md'} fixed={'top'}
+                <Navbar expand={'md'} fixed={'top'}
                     style={{
                         ...navbarStyles.bar,
-                        backgroundColor: 'rgb(0,0,0,' + opacity + ')',
+                        backgroundColor: 'rgb(255,255,255,' + opacity + ')',
                     }}
                 >
                     <Navbar.Brand href="#home">Checkpoint</Navbar.Brand>
