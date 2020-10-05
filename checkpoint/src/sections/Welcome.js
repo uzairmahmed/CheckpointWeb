@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Element } from 'react-scroll';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { baseStyles, welcomeStyles, theme } from '../styles'
+import { baseStyles } from '../styles'
 
 export default class Welcome extends Component {
     constructor(props) {
