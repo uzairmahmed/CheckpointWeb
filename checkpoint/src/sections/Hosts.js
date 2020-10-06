@@ -30,7 +30,7 @@ export default class Hosts extends Component {
                   <StaffMember
                     name={host.name}
                     desc={host.body}
-                    // pfp={require(host.profilepic)}
+                    pfp={require(host.profilepic)}
                     link={host.link}
                     linktext={host.link_title}
                   />

@@ -4,7 +4,7 @@ backend:
 
 # These lines should *not* be indented
 media_folder: "checkpoint/src/assets" 
-public_folder: "/images" 
+public_folder: "../" 
 
 collections:
   - name: "hosts" # Used in routes, e.g., /admin/collections/blog
