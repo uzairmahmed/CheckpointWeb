@@ -1,14 +1,14 @@
 import { theme } from '.'
 
 const hero = {
-    marginTop: theme.spacing.regular,
-    backgroundColor: "green",
-    height:'60vh',
-    padding: theme.spacing.small + " " + theme.spacing.regular,
-    justifySelf: "center",
+    display: 'flex',
+    padding :theme.spacing.regular + " 0px" ,
+    minHeight: "75vh",
+    width: "100vw",
+    justifyContent: "center",
     textAlign:"center",
-    // verticalAlign: "center",
 }
+
 
 const title = {
     fontFamily: theme.fonts.fontHeader,

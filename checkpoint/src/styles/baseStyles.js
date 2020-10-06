@@ -6,13 +6,12 @@ const block = {
     minHeight: "75vh",
     width: "100vw",
     justifyContent: "center",
-
 }
 
 const row = {
+    width: "100%",
     justifyContent: "center",
     alignItems: "center", 
-    backgroundColor:"yellow"
 }
 
 const container = {
@@ -20,7 +19,6 @@ const container = {
     flexDirection:"column",
     justifyContent:"center",
     alignItems: "center",
-    backgroundColor:"green"
 
 }
 
@@ -30,7 +28,6 @@ const header = {
     fontSize: theme.fonts.fontSizeParagraph,
     fontWeight: theme.fonts.fontWeight,
     color: theme.fonts.fontColor,
-    backgroundColor:"blue"
 }
 
 const emphasis = {
@@ -48,8 +45,8 @@ const paragraph = {
 }
 
 const profilepicture = {
-    width: "250px",
-    height: "250px",
+    width: "150px",
+    height: "150px",
     margin: theme.spacing.small,
 }
 
