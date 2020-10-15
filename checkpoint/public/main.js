@@ -5,7 +5,8 @@ const fs = require("fs")
 const dirPath = path.join(__dirname, "../cms")
 const hostsPath = path.join(dirPath, "/hosts")
 const podcastsPath = path.join(dirPath, "/podcasts")
-let postlist = []
+let hostlist = []
+let podlist = []
 
 
 const getHosts = () => {
@@ -21,10 +22,10 @@ const getHosts = () => {
             fs.readFile(`${hostsPath}/${file}`, "utf8", (err, contents) => {
                 // console.log(contents)
 
-                postlist.push(JSON.parse(contents))
+                hostlist.push(JSON.parse(contents))
                 ilist.push(i)
                 if (ilist.length === files.length) {
-                    const sortedList = postlist.sort((a, b) => {
+                    const sortedList = hostlist.sort((a, b) => {
                         return a.id < b.id ? 1 : -1
                     })
                     let data = JSON.stringify(sortedList)
@@ -49,10 +50,10 @@ const getPodcasts = () => {
             fs.readFile(`${podcastsPath}/${file}`, "utf8", (err, contents) => {
                 // console.log(contents)
 
-                postlist.push(JSON.parse(contents))
+                podlist.push(JSON.parse(contents))
                 ilist.push(i)
                 if (ilist.length === files.length) {
-                    const sortedList = postlist.sort((a, b) => {
+                    const sortedList = podlist.sort((a, b) => {
                         return a.id < b.id ? 1 : -1
                     })
                     let data = JSON.stringify(sortedList)
