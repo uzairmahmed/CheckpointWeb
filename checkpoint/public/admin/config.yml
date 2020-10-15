@@ -12,10 +12,22 @@ collections:
     folder: "checkpoint/cms/hosts" # The path to the folder where the documents are stored
     extension: "json"
     create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{YYYY-MM-DD}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Profile Picture", name: "profilepic", widget: "image"}
       - {label: "Body", name: "body", widget: "text"}
       - {label: "Link", name: "link", widget: "string"}
       - {label: "Link Title", name: "link_title", widget: "string"}
+
+  - name: "podcasts" # Used in routes, e.g., /admin/collections/blog
+    label: "Podcasts" # Used in the UI
+    folder: "checkpoint/cms/podcasts" # The path to the folder where the documents are stored
+    extension: "json"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{YYYY-MM-DD}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Headline", name: "headline", widget: "text"}
+      - {label: "Spotify Link", name: "link_spotify", widget: "string"}
+      - {label: "Apple Music Link", name: "link_apple", widget: "string"}

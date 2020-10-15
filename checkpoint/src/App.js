@@ -5,6 +5,7 @@ import './styles/scrollbar.css'
 import NavBar from './sections/Navbar'
 import Welcome from './sections/Welcome'
 import Hosts from './sections/Hosts'
+import Podcasts from './sections/Podcasts'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <NavBar />
         <Welcome />
         <Hosts />
+        <Podcasts />
       </body>
     </div>
   );
