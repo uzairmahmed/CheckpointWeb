@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Row from 'react-bootstrap/Row'
-import { FaSpotify, FaItunesNote } from 'react-icons/fa'
 import Col from 'react-bootstrap/Col'
 import { baseStyles, hostStyles, podcastStyles } from '../styles';
 import Image from 'react-bootstrap/esm/Image';
