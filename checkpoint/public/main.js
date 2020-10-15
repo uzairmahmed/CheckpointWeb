@@ -65,3 +65,4 @@ const getPodcasts = () => {
 }
 
 getHosts()
+getPodcasts()
