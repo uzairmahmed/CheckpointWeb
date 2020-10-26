@@ -4,6 +4,7 @@ const colors = {
     secondary: "#FFF",
     lightGray: "#AAA",
     darkGray: "#555",
+    accent: "#6666ff",
 }
 
 const spacing = {

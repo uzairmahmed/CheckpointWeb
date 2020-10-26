@@ -12,10 +12,12 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-scripts": "3.4.3",
-    "react-scroll": "^1.8.1"
+    "react-scroll": "^1.8.1",
+    "react-tweet-embed": "^1.2.2",
+    "react-twitter-embed": "^3.0.3"
   },
   "scripts": {
-    "yerr":"node public/main.js ",
+    "yerr": "node public/main.js ",
     "start": "node public/main.js && react-scripts start",
     "build": "node public/main.js && react-scripts build",
     "test": "react-scripts test",

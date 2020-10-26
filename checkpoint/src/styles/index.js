@@ -4,6 +4,8 @@ import * as navbarStyles from './navbarStyles'
 import * as welcomeStyles from './welcomeStyles'
 import * as hostStyles from './hostStyles'
 import * as podcastStyles from './podcastStyles'
+import * as contactStyles from './contactStyles'
+import * as footerStyles from './footerStyles'
 
 export {
     theme,
@@ -11,5 +13,7 @@ export {
     navbarStyles,
     welcomeStyles,
     hostStyles,
-    podcastStyles
+    podcastStyles,
+    contactStyles,
+    footerStyles
 }

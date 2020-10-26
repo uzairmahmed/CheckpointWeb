@@ -44,6 +44,14 @@ const paragraph = {
     lineHeight:'1.5em'
 }
 
+const title = {
+    fontFamily: theme.fonts.font,
+    fontSize: theme.fonts.fontSizeSub,
+    color: theme.colors.secondary,
+    lineHeight:'1.5em'
+}
+
+
 const profilepicture = {
     width: "150px",
     height: "150px",
@@ -63,4 +71,4 @@ const button = {
 }
 
 
-export { block, row, emphasis, container, header, paragraph, profilepicture, button,  }
+export { block, row, emphasis, container, header, title, paragraph, profilepicture, button,  }
