@@ -8,7 +8,7 @@ export default class Welcome extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            background: require('../assets/backgrounds/2.jpg')
+            background: require('../assets/backgrounds/3.jpg')
         }
     }
     render() {

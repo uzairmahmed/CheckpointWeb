@@ -18,12 +18,15 @@ class FooterComponent extends Component {
             >icons8.</a>
             <br />
               Photos by <a
-              href={"https://unsplash.com/@adrienolichon"}
+              href={"https://unsplash.com/@christianperner"}
               style={footerStyles.link}
-            >Adrien Alichon</a> and <a
-              href={"https://unsplash.com/@matreding"}
+            >Christian Perner</a>, <br /><a
+              href={"https://unsplash.com/@davidjorre"}
               style={footerStyles.link}
-            >Mat Reding</a> on <a
+            >David Jorre</a> and <br /><a
+              href={"https://unsplash.com/@jipy32"}
+              style={footerStyles.link}
+            >Jean-Philippe Delberghe</a> on <a
               href={"https://unsplash.com/"}
               style={footerStyles.link}
             >Unsplash.</a>
