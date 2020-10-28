@@ -17,7 +17,7 @@ function App() {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
       </head>
       
-      <body style={{ backgroundColor: "#FFF", overflowX: "hidden" }}>
+      <body style={{ backgroundColor: "#FFF", overflowX: "hidden", overflowY: "hidden" }}>
         <NavBar />
         <Welcome />
         <Hosts />

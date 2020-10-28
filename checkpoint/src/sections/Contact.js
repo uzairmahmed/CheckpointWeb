@@ -19,7 +19,7 @@ export default class Hosts extends Component {
   }
   render() {
     return (
-      <Element name="Podcasts" className="Podcasts">
+      <Element name="Connect With Us" className="Connect With Us">
         <BaseDiv
           header="Connect with us."
           bg={this.state.background}

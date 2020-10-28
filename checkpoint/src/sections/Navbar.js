@@ -40,10 +40,10 @@ export default class NavbarSec extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>
-                                <NavLink title="Meet your Hosts" />
+                                <NavLink title="Home" />
+                                <NavLink title="Meet Your Hosts" />
                                 <NavLink title="Podcasts" />
-                                <NavLink title="IRAE" />
-                                <NavLink title="Connect + Collaborate" />
+                                <NavLink title="Connect With Us" />
                             </Nav>
                         </Navbar.Collapse>
                     </div>

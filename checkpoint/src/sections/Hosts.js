@@ -18,7 +18,7 @@ export default class Hosts extends Component {
   }
   render() {
     return (
-      <Element name="Hosts" className="Hosts">
+      <Element name="Meet Your Hosts" className="Meet Your Hosts">
         <BaseDiv
           header="Meet Your Hosts"
           bg={this.state.background}

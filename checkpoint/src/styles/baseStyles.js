@@ -3,7 +3,7 @@ import { theme } from '.'
 const block = {
     display: 'flex',
     padding :theme.spacing.regular + " 0px" ,
-    minHeight: "75vh",
+    minHeight: "100vh",
     width: "100vw",
     justifyContent: "center",
 }
@@ -23,7 +23,7 @@ const container = {
 }
 
 const header = {
-    padding:theme.spacing.tiny,
+    padding: theme.spacing.tiny,
     fontFamily: theme.fonts.fontHeader,
     fontSize: theme.fonts.fontSizeParagraph,
     fontWeight: theme.fonts.fontWeight,
