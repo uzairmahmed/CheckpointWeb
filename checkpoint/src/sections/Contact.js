@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Element } from 'react-scroll';
 import Row from 'react-bootstrap/Row'
 
-import PodcastItem from '../components/PodcastItem'
+// import PodcastItem from '../components/PodcastItem'
 import BaseDiv from '../components/BaseDiv'
 
 import ContactCard from "../components/ContactCard";
