@@ -3,7 +3,7 @@ import { theme } from '.'
 const block = {
     display: 'flex',
     padding :theme.spacing.regular + " 0px" ,
-    minHeight: "100vh",
+    minHeight: "90vh",
     width: "100vw",
     justifyContent: "center",
 }

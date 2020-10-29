@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import { footerStyles, } from '../styles'
 
-class FooterComponent extends Component {
+export default class Footer extends Component {
 
   render() {
     return (
-      <Container style={footerStyles.footer}>
+      // <Container style={footerStyles.footer}>
         <Row style={footerStyles.row}>
           <p style={footerStyles.text}>
             Icons by <a
@@ -38,10 +36,8 @@ class FooterComponent extends Component {
             >@uzairmahmed</a>
           </p>
         </Row>
+      // </Container>
 
-      </Container>
     );
   }
 }
-
-export default FooterComponent;

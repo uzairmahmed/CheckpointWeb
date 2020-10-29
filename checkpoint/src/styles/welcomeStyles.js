@@ -3,7 +3,7 @@ import { theme } from '.'
 const hero = {
     display: 'flex',
     padding :theme.spacing.regular + " 0px" ,
-    minHeight: "75vh",
+    minHeight: "90vh",
     width: "100vw",
     justifyContent: "center",
     textAlign:"center",

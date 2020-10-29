@@ -41,9 +41,9 @@ export default class NavbarSec extends Component {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>
                                 <NavLink title="Home" />
-                                <NavLink title="Meet Your Hosts" />
+                                <NavLink title="Hosts" />
                                 <NavLink title="Podcasts" />
-                                <NavLink title="Connect With Us" />
+                                <NavLink title="Contact" />
                             </Nav>
                         </Navbar.Collapse>
                     </div>

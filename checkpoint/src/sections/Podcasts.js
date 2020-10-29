@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Element } from 'react-scroll';
 import Row from 'react-bootstrap/Row'
 
 import PodcastItem from '../components/PodcastItem'
@@ -18,8 +17,8 @@ export default class Hosts extends Component {
   }
   render() {
     return (
-      <Element name="Podcasts" className="Podcasts">
-        <BaseDiv
+      <BaseDiv
+      navName="Podcasts"
           header="Listen to our Podcasts."
           bg={this.state.background}
           maincontent={
@@ -37,7 +36,6 @@ export default class Hosts extends Component {
             </Row>
           }
         />
-      </Element>
     )
   }
 }

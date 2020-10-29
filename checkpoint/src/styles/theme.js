@@ -1,10 +1,12 @@
 
 const colors = {
-    primary: "#000",
-    secondary: "#FFF",
-    lightGray: "#AAA",
-    darkGray: "#555",
-    accent: "#6666ff",
+    primary: "#141515",
+    secondary: "#FFFDED",
+    lightGray: "#C2C7C7",
+    darkGray: "#787D80",
+    accent: "#47B45F",
+    lightAccent: "#A3D9A6",
+    darkAccent: "#2E653A",
 }
 
 const spacing = {
@@ -52,7 +54,7 @@ const parallax = {
 const scrolls = {
     spy: true,
     smooth: true,
-    offset: 0,
+    offset: -100,
     duration: 500,
 }
 
