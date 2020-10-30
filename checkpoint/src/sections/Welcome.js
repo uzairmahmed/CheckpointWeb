@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { baseStyles, welcomeStyles } from '../styles'
 
+import headerFile from '../cms/header.json'
+
 export default class Welcome extends Component {
     constructor(props) {
         super(props)
@@ -24,10 +26,10 @@ export default class Welcome extends Component {
                     <Row style={baseStyles.row}>
                         <Col>
                             <h1 style={welcomeStyles.title}>
-                                Welcome to the Checkpoint Podcast
+                                {headerFile.title}
                             </h1>
                             <h3 style={welcomeStyles.subtitle}>
-                                this is a subtitle text
+                                {headerFile.subtitle}
                             </h3>
                         </Col>
                     </Row>

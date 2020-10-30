@@ -42,3 +42,13 @@ collections:
           - {label: "Main Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
 
+      - label: "Socials and Contact"
+        name: 'socials'
+        file: "checkpoint/src/cms/socials.json"
+        fields: 
+          - {label: "Email Address", name: "email", widget: "string"}
+          - {label: "Twitter Handle", name: "twitter", widget: "string"}
+          - {label: "Spotify Show URL (open.spotify.com)", name: "spotifyURL", widget: "string"}
+          - {label: "Apple Podcast URL (podcasts.apple.com)", name: "appleURL", widget: "string"}
+          - {label: "Audible URL", name: "audibleURL", widget: "string"}
+
