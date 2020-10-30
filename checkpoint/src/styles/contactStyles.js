@@ -4,9 +4,11 @@ const card = {
     margin: theme.spacing.regular + " " + theme.spacing.small,
     padding: theme.spacing.small,
     alignContent: "center",
-    // justifyContent: "center",
     backgroundColor: theme.colors.accent,
     borderRadius: theme.spacing.radius,
+    borderColor: theme.colors.accent,
+    boxShadow: theme.spacing.shadow+' '+theme.colors.shadow
+
 }
 
 const socialCard = {

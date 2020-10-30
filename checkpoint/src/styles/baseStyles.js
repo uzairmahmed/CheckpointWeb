@@ -47,7 +47,7 @@ const paragraph = {
 const title = {
     fontFamily: theme.fonts.font,
     fontSize: theme.fonts.fontSizeSub,
-    color: theme.colors.secondary,
+    color: theme.colors.primary,
     lineHeight:'1.5em'
 }
 

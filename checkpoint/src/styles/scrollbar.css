@@ -15,3 +15,10 @@
   background: #000;
 }
 
+nav .navbar-nav .nav-link .active{
+  color: #47B45F !important;
+}
+
+nav .navbar-nav .nav-link a{
+  color: #141515 !important;
+}

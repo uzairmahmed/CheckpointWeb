@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { baseStyles, hostStyles, podcastStyles } from '../styles';
+import { baseStyles, podcastStyles } from '../styles';
 import Image from 'react-bootstrap/esm/Image';
 
 
 export default class StaffMember extends Component {
     render() {
         return (
-            <Col style={hostStyles.card}>
+            <Col style={podcastStyles.card}>
                 <Row>
                     <h1 style={baseStyles.header}>
                         {this.props.name}

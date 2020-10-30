@@ -7,7 +7,8 @@ import { navbarStyles, theme } from '../styles/'
 export default class NavLink extends Component {
     render() {
         return (
-            <Nav.Link style={navbarStyles.link}>
+            <Nav.Link
+                style={navbarStyles.link}>
                 <Link
                     style={navbarStyles.item}
                     to={this.props.title}

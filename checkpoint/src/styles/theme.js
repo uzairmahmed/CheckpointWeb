@@ -7,6 +7,9 @@ const colors = {
     accent: "#47B45F",
     lightAccent: "#A3D9A6",
     darkAccent: "#2E653A",
+
+    shadow: "#9E9E9E"
+
 }
 
 const spacing = {
@@ -20,7 +23,9 @@ const spacing = {
     cardWidth: "300px",
     inputRadius: "10px",
     radius: "25px",
-    round: "50px"
+    round: "50px",
+
+    shadow: "0px 0px 10px 1px"
 }
 
 const fonts = {

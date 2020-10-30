@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import NavLink from '../components/NavLink'
 
-import { navbarStyles } from '../styles'
+import { navbarStyles, theme } from '../styles'
 
 export default class NavbarSec extends Component {
     constructor(props) {
@@ -26,12 +26,14 @@ export default class NavbarSec extends Component {
 
     render() {
         const opacity = Math.min(this.state.currentScrollHeight / 1000,)
+        const navbarColor = "rgb(158, 158, 158, " + String(opacity) + ")"
         return (
             <div>
                 <Navbar expand={'md'} fixed={'top'}
                     style={{
                         ...navbarStyles.bar,
                         backgroundColor: 'rgb(255,255,255,' + opacity + ')',
+                        boxShadow: theme.spacing.shadow + ' ' + navbarColor
                     }}
                 >
                     <Navbar.Brand href="#home">Checkpoint</Navbar.Brand>

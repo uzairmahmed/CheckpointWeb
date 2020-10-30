@@ -4,7 +4,7 @@ const bar = {
     width: "100vw",
     padding: theme.spacing.small + " " + theme.spacing.regular,
     justifyContent: "space-between",
-    verticalAlign: "center"
+    verticalAlign: "center",
 }
 
 const brand = {
@@ -14,7 +14,8 @@ const brand = {
 }
 
 const link = {
-    padding: "0px"
+    padding: "0px",
+    color: theme.colors.primary
 }
 
 const item = {

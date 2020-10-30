@@ -30,7 +30,7 @@ export default class StaffMember extends Component {
                     </p>
                 </Row>
                 <Row>
-                    <Button href={this.props.link}>
+                    <Button style={hostStyles.button} href={this.props.link}>
                         {this.props.linktext}
                     </Button>
                 </Row>

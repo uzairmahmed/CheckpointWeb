@@ -9,11 +9,13 @@ const container = {
 const card = {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: theme.colors.lightGray,
+    backgroundColor: theme.colors.accent,
     borderRadius: theme.spacing.radius,
     alignItems: "center",
     margin: theme.spacing.regular,
     padding: theme.spacing.regular,
+
+    boxShadow: theme.spacing.shadow+' '+theme.colors.shadow
 }
 
 const icon = {
