@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col';
 
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
+import socialsFile from '../cms/socials.json'
+
 export default class Hosts extends Component {
   constructor(props) {
     super(props);
@@ -26,20 +28,20 @@ export default class Hosts extends Component {
           <Row style={{ width: "100%", alignItems: "center", justifyContent: "center" }}>
             <Col style={{ alignItems: "center", justifyContent: "center" }}>
               <ContactCard
-                value="uzairmahmed@gmail.com"
-                link="mailto:uzairmahmed@gmail.com"
+                value={socialsFile.email}
+                link={"mailto:" + socialsFile.email}
                 img={require('../assets/icons/mail.png')}
               />
               <ContactCard
-                value="@CheckpointNowMD"
-                link="https://twitter.com/CheckpointNowMD"
+                value={"@" + socialsFile.twitter}
+                link={"https://twitter.com/" + socialsFile.twitter}
                 img={require('../assets/icons/insta.png')}
               />
             </Col>
             <Col style={{ justifyContent: "center" }}>
               <TwitterTimelineEmbed
                 sourceType="profile"
-                screenName="CheckpointNowMD"
+                screenName={socialsFile.twitter}
                 options={{
                   // tweetLimit: "5",
                   width: "100%",
