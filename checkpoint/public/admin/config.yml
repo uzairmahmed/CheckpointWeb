@@ -31,3 +31,14 @@ collections:
       - {label: "Headline", name: "headline", widget: "text"}
       - {label: "Spotify Link", name: "link_spotify", widget: "string"}
       - {label: "Apple Music Link", name: "link_apple", widget: "string"}
+  
+  - name: "extras"
+    label: "Extras"
+    files:
+      - label: "Header"
+        name: 'header'
+        file: "checkpoint/src/cms/header.json"
+        fields: 
+          - {label: "Main Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+
