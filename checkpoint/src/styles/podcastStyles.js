@@ -2,8 +2,8 @@ import { theme } from '.'
 
 const container = {
     display: 'flex',
-    width:'100%',
-
+    width: '100%',
+    justifyContent:'center',
 }
 
 const card = {
@@ -21,7 +21,7 @@ const card = {
 const icon = {
     width: "50px",
     height: "50px",
-    float: 'right'
+    
     // margin: theme.spacing.small,
 }
 

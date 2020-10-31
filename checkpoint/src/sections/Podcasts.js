@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row'
 
 import PodcastItem from '../components/PodcastItem'
 import BaseDiv from '../components/BaseDiv'
+import { Element } from 'react-scroll';
 
 import { podcastStyles } from '../styles'
 
@@ -17,12 +18,14 @@ export default class Hosts extends Component {
   }
   render() {
     return (
-      <BaseDiv
-      navName="Podcasts"
+      <Element name="Podcasts" className="Podcasts">
+
+        <BaseDiv
           header="Listen to our Podcasts."
           bg={this.state.background}
           maincontent={
-            <Row style={podcastStyles.container}>
+            <Row xs={1} sm={1} md={1} lg={2} xl={2}
+              style={podcastStyles.container}>
               {podcastsFile.map((podcast) => {
                 return (
                   <PodcastItem
@@ -36,6 +39,7 @@ export default class Hosts extends Component {
             </Row>
           }
         />
+      </Element>
     )
   }
 }

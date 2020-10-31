@@ -10,6 +10,17 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 export default class StaffMember extends Component {
     render() {
+        let textAligned;
+        let imgAligned;
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            textAligned = 'center'
+            imgAligned = 'center'
+        } else {
+            textAligned = 'left'
+            imgAligned = 'right'
+        }
+
         return (
             <Col style={podcastStyles.card}>
                 <Row>
@@ -23,15 +34,20 @@ export default class StaffMember extends Component {
                 <Row>
                     <ButtonGroup>
                         <Button style={{...podcastStyles.button, ...podcastStyles.leftButton}} href={this.props.spotify}>
-                            <Row xs={1} sm={1} md={2} lg={2} xl={2}>
-                                <Col >
+                            <Row xs={1} sm={1} md={2} lg={2} xl={2} >
+                                <Col>
                                     <Image
-                                        style={podcastStyles.icon}
+                                        style={{
+                                            ...podcastStyles.icon,
+                                            float: imgAligned
+                                        }}
                                         src={require("../assets/icons/spotify.png")}
                                         roundedCircle
                                     />
                                 </Col>
-                                <Col style={{textAlign:'left'}}>
+                                <Col style={{
+                                    textAlign: textAligned
+                                }}>
                                     Listen on Spotify
                                 </Col>
                             </Row>

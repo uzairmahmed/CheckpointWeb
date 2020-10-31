@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import { baseStyles } from '../styles';
-import { Element } from 'react-scroll';
 
 class BaseDiv extends Component {
   renderMain(content) {
@@ -26,11 +25,13 @@ class BaseDiv extends Component {
         style={{
           ...baseStyles.block,
           backgroundImage: "url(" + this.props.bg + ")",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          backgroundRepeat: 'no-repeat',
+          transform: 'translateZ(-1px)',
         }}
       >
         <Container style={baseStyles.container}>
-          <Element name={this.props.navName} className={this.props.navName}>
             <Row>
               <Col>
                 <h2 style={baseStyles.header}>
@@ -39,7 +40,6 @@ class BaseDiv extends Component {
 
               </Col>
             </Row>
-          </Element>
           <Row
             style={baseStyles.row}
           >

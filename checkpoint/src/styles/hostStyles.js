@@ -3,6 +3,8 @@ import { theme } from '.'
 const container = {
     display: 'flex',
     width: '100%',
+    justifyContent:'center',
+
 }
 
 const card = {
