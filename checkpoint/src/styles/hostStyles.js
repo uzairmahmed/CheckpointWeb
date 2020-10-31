@@ -24,8 +24,8 @@ const button = {
     fontFamily: theme.fonts.fontParagraph,
     fontSize: theme.fonts.fontSizeParagraph,
     borderColor: theme.colors.accent,
-    color: theme.colors.primary,
-    backgroundColor: theme.colors.lightAccent,
+    // color: theme.colors.primary,
+    // backgroundColor: theme.colors.lightAccent,
 }
 
 export { container, card, button }

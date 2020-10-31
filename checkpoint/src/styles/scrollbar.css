@@ -7,18 +7,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #AAA;
+  background: #47B45F;
   border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #000;
+  background: #2E653A;
 }
 
-nav .navbar-nav .nav-link .active{
-  color: #47B45F !important;
-}
 
-nav .navbar-nav .nav-link a{
-  color: #141515 !important;
-}
