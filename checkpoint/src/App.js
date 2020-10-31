@@ -15,8 +15,7 @@ function App() {
   return (
     <div>
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Montserrat&family=Poiret+One&family=Raleway&display=swap" rel="stylesheet"/>
       </head>
 
       <body style={{ backgroundColor: "#C2C7C7", overflowX: "hidden", }}>

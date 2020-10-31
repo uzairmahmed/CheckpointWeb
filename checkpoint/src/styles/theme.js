@@ -29,21 +29,19 @@ const spacing = {
 }
 
 const fonts = {
-    font: "Raleway, sans-serif",
+    font: "'Montserrat', sans-serif",
+    fontHero: "Comfortaa, cursive",
     fontHeader: "Raleway, sans-serif",
-    fontParagraph: "'Open Sans', sans-serif",
+    fontParagraph: "'Montserrat', sans-serif",
+    fontQuiet: "'Poiret One', cursive'",
 
     fontColor: colors.primary,
 
-    fontSize: "25px",
-    fontSizeTitle: "55px",
+    fontSizeNav: "25px",
+    fontSizeTitle: "50px",
     fontSizeHead: "30px",
     fontSizePara: "15px",
-    fontSizeSub: "20px",
-
-    fontWeight: "400",
-    fontWeightLight: "300",
-    fontWeightHeavy: "600",
+    fontSizeSub: "25px",
 }
 
 const parallax = {

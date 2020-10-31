@@ -22,4 +22,14 @@ const icon = {
     width: theme.spacing.regular,
     marginBottom: theme.spacing.small
 }
-export { card, icon, socialCard}
+
+
+const text = {
+    fontFamily: theme.fonts.fontParagraph,
+    fontSize: theme.fonts.fontSizePara,
+    color: theme.colors.primary,
+    // lineHeight: '1.5em',
+    textAlign:'center'
+}
+
+export { card, icon, socialCard, text}

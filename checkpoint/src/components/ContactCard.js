@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col';
 
-import { baseStyles, contactStyles } from '../styles'
+import { contactStyles } from '../styles'
 
 export default class ContactCard extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class ContactCard extends Component {
         <Card style={contactStyles.card}>
           <Col>
             <Image src={this.props.img} style={contactStyles.icon} />
-            <h2 style={{...baseStyles.title, textAlign:'center'}} >
+            <h2 style={contactStyles.text} >
               {this.props.value}
             </h2>
           </Col>

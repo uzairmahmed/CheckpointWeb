@@ -20,7 +20,7 @@ export default class StaffMember extends Component {
                     />
                 </Row>
                 <Row>
-                    <h1 style={baseStyles.header}>
+                    <h1 style={baseStyles.cardTitle}>
                         {this.props.name}
                     </h1>
                 </Row>

@@ -30,12 +30,12 @@ export default class Hosts extends Component {
               <ContactCard
                 value={socialsFile.email}
                 link={"mailto:" + socialsFile.email}
-                img={require('../assets/icons/mail.png')}
+                img={require('../assets/icons/email.png')}
               />
               <ContactCard
                 value={"@" + socialsFile.twitter}
                 link={"https://twitter.com/" + socialsFile.twitter}
-                img={require('../assets/icons/insta.png')}
+                img={require('../assets/icons/twitter.png')}
               />
             </Col>
             <Col style={{ justifyContent: "center" }}>

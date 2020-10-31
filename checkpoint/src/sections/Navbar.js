@@ -36,7 +36,7 @@ export default class NavbarSec extends Component {
                         boxShadow: theme.spacing.shadow + ' ' + navbarColor
                     }}
                 >
-                    <Navbar.Brand href="#home">Checkpoint</Navbar.Brand>
+                    <Navbar.Brand style={navbarStyles.brand} href="#home">Checkpoint</Navbar.Brand>
 
                     <div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

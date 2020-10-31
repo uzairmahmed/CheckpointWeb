@@ -3,7 +3,7 @@ import { theme } from '.'
 const block = {
     display: 'flex',
     padding :theme.spacing.regular + " 0px" ,
-    minHeight: "90vh",
+    minHeight: "100vh",
     width: "100vw",
     justifyContent: "center",
 }
@@ -26,15 +26,7 @@ const header = {
     padding: theme.spacing.tiny,
     fontFamily: theme.fonts.fontHeader,
     fontSize: theme.fonts.fontSizeParagraph,
-    fontWeight: theme.fonts.fontWeight,
     color: theme.fonts.fontColor,
-}
-
-const emphasis = {
-    fontFamily: theme.fonts.fontParagraph,
-    fontSize: theme.fonts.fontSizeSub,
-    color: theme.fonts.fontColor,
-    lineHeight:'1.5em'
 }
 
 const paragraph = {
@@ -44,8 +36,8 @@ const paragraph = {
     lineHeight:'1.5em'
 }
 
-const title = {
-    fontFamily: theme.fonts.font,
+const cardTitle = {
+    fontFamily: theme.fonts.fontParagraph,
     fontSize: theme.fonts.fontSizeSub,
     color: theme.colors.primary,
     lineHeight:'1.5em'
@@ -71,4 +63,4 @@ const button = {
 }
 
 
-export { block, row, emphasis, container, header, title, paragraph, profilepicture, button,  }
+export { block, row, container, header, cardTitle, paragraph, profilepicture, button,  }

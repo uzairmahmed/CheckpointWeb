@@ -8,9 +8,8 @@ const bar = {
 }
 
 const brand = {
-    fontFamily: theme.fonts.font,
-    fontSize: theme.fonts.fontSize,
-    fontWeight: theme.fonts.fontWeightLight,
+    fontFamily: theme.fonts.fontHero,
+    fontSize: theme.fonts.fontSizeNav,
 }
 
 const link = {
@@ -20,8 +19,7 @@ const link = {
 
 const item = {
     padding: theme.spacing.tiny,
-    fontFamily: theme.fonts.font,
-    fontWeight: theme.fonts.fontWeightLight,
+    fontFamily: theme.fonts.fontHero,
 }
 
 export { bar, link, brand, item }
