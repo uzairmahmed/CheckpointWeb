@@ -29,16 +29,16 @@ const spacing = {
 }
 
 const fonts = {
-    font: "'Montserrat', sans-serif",
-    fontHero: "Comfortaa, cursive",
+    font: "Montserrat, sans-serif",
+    fontHero: "'Nunito Sans', sans-serif",
     fontHeader: "Raleway, sans-serif",
-    fontParagraph: "'Montserrat', sans-serif",
-    fontQuiet: "'Poiret One', cursive'",
+    fontParagraph: "Montserrat, sans-serif",
+    fontQuiet: "Raleway, sans-serif",
 
     fontColor: colors.primary,
 
     fontSizeNav: "25px",
-    fontSizeTitle: "50px",
+    fontSizeTitle: "40px",
     fontSizeHead: "30px",
     fontSizePara: "15px",
     fontSizeSub: "25px",

@@ -31,6 +31,7 @@ export default class Hosts extends Component {
                   <PodcastItem
                     name={podcast.name}
                     desc={podcast.headline}
+                    hosts={podcast.hosts}
                     spotify={podcast.link_spotify}
                     apple={podcast.link_apple}
                   />

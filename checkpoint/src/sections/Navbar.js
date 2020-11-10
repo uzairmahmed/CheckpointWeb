@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Row from 'react-bootstrap/esm/Row';
+import Image from 'react-bootstrap/Image';
 
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
@@ -25,8 +27,11 @@ export default class NavbarSec extends Component {
     }
 
     render() {
-        const opacity = Math.min(this.state.currentScrollHeight / 1000,)
+        const opacity = Math.min(this.state.currentScrollHeight / 250,)
         const navbarColor = "rgb(158, 158, 158, " + String(opacity) + ")"
+
+        
+
         return (
             <div>
                 <Navbar expand={'md'} fixed={'top'}
@@ -36,19 +41,29 @@ export default class NavbarSec extends Component {
                         boxShadow: theme.spacing.shadow + ' ' + navbarColor
                     }}
                 >
-                    <Navbar.Brand style={navbarStyles.brand} href="#home">Checkpoint</Navbar.Brand>
+                    <Row style={{justifyContent: 'space-around', width:'100%'}}>
+                        <Navbar.Brand style={navbarStyles.brand} href="#home">
+                        <Image
+                                style={{
+                                    ...navbarStyles.brandImg,
+                                    height: window.innerWidth / 10
+                                }}
+                            src={require('../assets/logo/long-logo.png')}
+                        />
+                        </Navbar.Brand>
+                        <Navbar.Toggle style={{justifyContent: 'right'}} aria-controls="basic-navbar-nav" />
+                    </Row>
 
-                    <div>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Row>
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav>
+                            <Nav fill={true} justify={true}>
                                 <NavLink title="Home" />
                                 <NavLink title="Hosts" />
                                 <NavLink title="Podcasts" />
                                 <NavLink title="Contact" />
                             </Nav>
                         </Navbar.Collapse>
-                    </div>
+                    </Row>
                 </Navbar>
             </div>
         )

@@ -21,7 +21,7 @@ const card = {
 
 const button = {
     padding: theme.spacing.tiny + " " + theme.spacing.small,
-    marginBottom: 0,
+    margin: 5,
     borderRadius: theme.spacing.round,
     fontFamily: theme.fonts.fontParagraph,
     fontSize: theme.fonts.fontSizeParagraph,

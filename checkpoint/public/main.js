@@ -20,8 +20,6 @@ const getHosts = () => {
             let obj = {}
             let post
             fs.readFile(`${hostsPath}/${file}`, "utf8", (err, contents) => {
-                // console.log(contents)
-
                 hostlist.push(JSON.parse(contents))
                 ilist.push(i)
                 if (ilist.length === files.length) {
@@ -48,8 +46,6 @@ const getPodcasts = () => {
             let obj = {}
             let post
             fs.readFile(`${podcastsPath}/${file}`, "utf8", (err, contents) => {
-                // console.log(contents)
-
                 podlist.push(JSON.parse(contents))
                 ilist.push(i)
                 if (ilist.length === files.length) {

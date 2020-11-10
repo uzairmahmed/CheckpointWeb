@@ -11,7 +11,7 @@ const block = {
 const row = {
     width: "100%",
     justifyContent: "center",
-    alignItems: "center", 
+    alignItems: "center",
 }
 
 const container = {

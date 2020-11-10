@@ -19,10 +19,7 @@ const card = {
 }
 
 const icon = {
-    width: "50px",
-    height: "50px",
-    
-    // margin: theme.spacing.small,
+    margin: 2.5,
 }
 
 const button = {

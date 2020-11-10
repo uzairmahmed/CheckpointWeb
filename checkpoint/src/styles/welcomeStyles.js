@@ -10,6 +10,7 @@ const hero = {
 }
 
 const title = {
+    marginBottom: theme.spacing.regular,
     fontFamily: theme.fonts.fontHero,
     fontSize: theme.fonts.fontSizeTitle,
     color: theme.fonts.fontColor,

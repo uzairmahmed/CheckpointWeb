@@ -30,43 +30,22 @@ export default class StaffMember extends Component {
                 </Row>
                 <Row>
                     <p>{this.props.desc}</p>
+                    <p>Hosts: {this.props.hosts}</p>
                 </Row>
-                <Row>
-                    <ButtonGroup>
-                        <Button style={{...podcastStyles.button, ...podcastStyles.leftButton}} href={this.props.spotify}>
-                            <Row xs={1} sm={1} md={2} lg={2} xl={2} >
-                                <Col>
-                                    <Image
-                                        style={{
-                                            ...podcastStyles.icon,
-                                            float: imgAligned
-                                        }}
-                                        src={require("../assets/icons/spotify.png")}
-                                        roundedCircle
-                                    />
-                                </Col>
-                                <Col style={{
-                                    textAlign: textAligned
-                                }}>
-                                    Listen on Spotify
-                                </Col>
-                            </Row>
-                        </Button>
-                        <Button style={{...podcastStyles.button, ...podcastStyles.rightButton}} href={this.props.apple}>
-                            <Row xs={1} sm={1} md={2} lg={2} xl={2} >
-                                <Col>
-                                    <Image
-                                        style={podcastStyles.icon}
-                                        src={require("../assets/icons/itunes.png")}
-                                        roundedCircle
-                                    />
-                                </Col>
-                                <Col style={{textAlign:'left'}}>
-                                    Listen on Apple Music
-                            </Col>
-                            </Row>
-                        </Button>
-                    </ButtonGroup>
+                
+                <Row style={{ justifyContent: 'center' }}>
+                    <a href={this.props.spotify} style= {{ alignSelf: "center"}}>
+                        <Image
+                            style={podcastStyles.icon}
+                            src={require("../assets/icons/spotify_podcast.png")}
+                        />
+                    </a>
+                    <a href={this.props.apple} style= {{ alignSelf: "center"}}>
+                        <Image
+                            style={podcastStyles.icon}
+                            src={require("../assets/icons/apple_podcast.png")}
+                        />
+                    </a>
                 </Row>
             </Col>
         )

@@ -26,7 +26,6 @@ export default class Hosts extends Component {
             <Row xs={1} sm={1} md={1} lg={2} xl={2}
               style={hostStyles.container}>
               {hostsFile.map((host) => {
-                console.log(host)
                 return (
                   <StaffMember
                     name={host.name}
@@ -34,6 +33,10 @@ export default class Hosts extends Component {
                     pfp={require("../assets" + host.profilepic)}//.replace('/images',''))}
                     link={host.link}
                     linktext={host.link_title}
+                    link2={host.link2}
+                    linktext2={host.link_title2}
+                    link3={host.link3}
+                    linktext3={host.link_title3}
                   />
                 )
               })}

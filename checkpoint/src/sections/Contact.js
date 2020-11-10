@@ -38,7 +38,7 @@ export default class Hosts extends Component {
                   img={require('../assets/icons/twitter.png')}
                 />
               </Col>
-              <Col style={{ justifyContent: "center" }}>
+              {/* <Col style={{ justifyContent: "center" }}>
                 <TwitterTimelineEmbed
                   sourceType="profile"
                   screenName={socialsFile.twitter}
@@ -50,7 +50,7 @@ export default class Hosts extends Component {
                   noBorders="true"
                   noFooter="true"
                 ></TwitterTimelineEmbed>
-              </Col>
+              </Col> */}
             </Row>
           }
         />
