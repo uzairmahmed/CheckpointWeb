@@ -27,10 +27,23 @@ export default class NavbarSec extends Component {
     }
 
     render() {
+        let logoComponent
         const opacity = Math.min(this.state.currentScrollHeight / 250,)
         const navbarColor = "rgb(158, 158, 158, " + String(opacity) + ")"
 
-        
+        if ((this.state.currentScrollHeight > 100) && (!window.matchMedia("(max-width: 768px)").matches)) {
+            logoComponent = (<></>)
+        } else {
+            logoComponent = (
+            <Image
+                style={{
+                    ...navbarStyles.brandImg,
+                    height: window.innerWidth / 10
+                }}
+                src={require('../assets/logo/long-logo.png')}
+                />
+            )
+        }
 
         return (
             <div>
@@ -41,22 +54,16 @@ export default class NavbarSec extends Component {
                         boxShadow: theme.spacing.shadow + ' ' + navbarColor
                     }}
                 >
-                    <Row style={{justifyContent: 'space-around', width:'100%'}}>
+                    <Row style={{ justifyContent: 'space-around', width: '100%', margin: 0}}>
                         <Navbar.Brand style={navbarStyles.brand} href="#home">
-                        <Image
-                                style={{
-                                    ...navbarStyles.brandImg,
-                                    height: window.innerWidth / 10
-                                }}
-                            src={require('../assets/logo/long-logo.png')}
-                        />
+                            {logoComponent}
                         </Navbar.Brand>
-                        <Navbar.Toggle style={{justifyContent: 'right'}} aria-controls="basic-navbar-nav" />
+                        <Navbar.Toggle style={{ justifyContent: 'right' }} aria-controls="basic-navbar-nav" />
                     </Row>
 
-                    <Row>
+                    <Row >
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav fill={true} justify={true}>
+                            <Nav fill={true} justify={true} >
                                 <NavLink title="Home" />
                                 <NavLink title="Hosts" />
                                 <NavLink title="Podcasts" />
