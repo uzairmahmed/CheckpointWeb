@@ -17,12 +17,12 @@ collections:
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Profile Picture", name: "profilepic", widget: "image"}
       - {label: "Body", name: "body", widget: "text"}
-      - {label: "Link", name: "link", widget: "string"}
-      - {label: "Link Title", name: "link_title", widget: "string"}
-      - {label: "Link 2", name: "link2", widget: "string"}
-      - {label: "Link Title 2", name: "link_title2", widget: "string"}
-      - {label: "Link 3", name: "link3", widget: "string"}
-      - {label: "Link Title 3", name: "link_title3", widget: "string"}
+      - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Link Title", name: "link_title", widget: "string", required: false}
+      - {label: "Link 2", name: "link2", widget: "string", required: false}
+      - {label: "Link Title 2", name: "link_title2", widget: "string", required: false}
+      - {label: "Link 3", name: "link3", widget: "string", required: false}
+      - {label: "Link Title 3", name: "link_title3", widget: "string", required: false}
 
   - name: "podcasts" # Used in routes, e.g., /admin/collections/blog
     label: "Podcasts" # Used in the UI
