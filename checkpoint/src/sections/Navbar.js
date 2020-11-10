@@ -28,41 +28,44 @@ export default class NavbarSec extends Component {
 
     render() {
         let logoComponent
-        const opacity = Math.min(this.state.currentScrollHeight / 250,)
+        const opacity = 0.5+ Math.min(this.state.currentScrollHeight / 250,)
         const navbarColor = "rgb(158, 158, 158, " + String(opacity) + ")"
 
         if ((this.state.currentScrollHeight > 100) && (!window.matchMedia("(max-width: 768px)").matches)) {
             logoComponent = (<></>)
         } else {
             logoComponent = (
-            <Image
-                style={{
-                    ...navbarStyles.brandImg,
-                    height: window.innerWidth / 10
-                }}
-                src={require('../assets/logo/long-logo.png')}
+                <Image
+                    style={{
+                        ...navbarStyles.brandImg,
+                        height: Math.min(Math.max(window.innerWidth/50, 15), 25)
+                    }}
+                    src={require('../assets/logo/long-logo.png')}
                 />
             )
         }
 
         return (
-            <div>
-                <Navbar expand={'md'} fixed={'top'}
-                    style={{
-                        ...navbarStyles.bar,
-                        backgroundColor: 'rgb(255,255,255,' + opacity + ')',
-                        boxShadow: theme.spacing.shadow + ' ' + navbarColor
-                    }}
-                >
-                    <Row style={{ justifyContent: 'space-around', width: '100%', margin: 0}}>
-                        <Navbar.Brand style={navbarStyles.brand} href="#home">
-                            {logoComponent}
-                        </Navbar.Brand>
+            <Navbar expand={'md'} fixed={'top'}
+                style={{
+                    ...navbarStyles.bar,
+                    backgroundColor: 'rgb(255,255,255,' + opacity + ')',
+                    boxShadow: theme.spacing.shadow + ' ' + navbarColor
+                }}
+            >
+                <Row style={{ justifyContent: 'space-between', alignItems: 'center', width: '100%', margin: 0 }}>
+                    <Navbar.Brand style={navbarStyles.brand} href="#home">
+                        <Image
+                            style={{
+                                ...navbarStyles.brandImg,
+                                width: Math.min(Math.max(window.innerWidth/2.75, 200), 350)
+                            }}
+                            src={require('../assets/logo/long-logo.png')}
+                        />
+                    </Navbar.Brand>
+                    <div style = {{marginRight: theme.spacing.regular}}>
                         <Navbar.Toggle style={{ justifyContent: 'right' }} aria-controls="basic-navbar-nav" />
-                    </Row>
-
-                    <Row >
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Collapse style={{ alignItems: 'center' }} id="basic-navbar-nav">
                             <Nav fill={true} justify={true} >
                                 <NavLink title="Home" />
                                 <NavLink title="Hosts" />
@@ -70,9 +73,9 @@ export default class NavbarSec extends Component {
                                 <NavLink title="Contact" />
                             </Nav>
                         </Navbar.Collapse>
-                    </Row>
-                </Navbar>
-            </div>
+                    </div>
+                </Row>
+            </Navbar>
         )
     }
 }

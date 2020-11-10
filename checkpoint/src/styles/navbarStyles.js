@@ -9,7 +9,8 @@ const bar = {
 }
 
 const brand = {
-    justifySelf: "center",
+    marginLeft: theme.spacing.regular,
+    marginTop: theme.spacing.tiny,
     fontFamily: theme.fonts.fontHero,
     fontSize: theme.fonts.fontSizeNav,
 }
@@ -17,9 +18,7 @@ const brand = {
 const brandImg = {
     padding: 0,
     margin: 0,
-    maxHeight: "70px",
-    // objectFit: 'contain',
-    // margin: theme.spacing.small,
+    // maxHeight: "80px"
 }
 
 const link = {
@@ -29,7 +28,7 @@ const link = {
 
 const item = {
     padding: theme.spacing.tiny,
-    fontFamily: theme.fonts.fontHero,
+    fontFamily: theme.fonts.fontQuiet,
 }
 
 export { bar, link, brand, brandImg, item }

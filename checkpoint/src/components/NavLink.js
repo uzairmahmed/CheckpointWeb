@@ -10,7 +10,10 @@ export default class NavLink extends Component {
             <Nav.Link
                 style={navbarStyles.link}>
                 <Link
-                    style={navbarStyles.item}
+                    style={{
+                        ...navbarStyles.item,
+                        fontSize:Math.min(Math.max(window.innerWidth/50, 15), 25),
+                    }}
                     to={this.props.title}
                     spy={theme.scrolls.spy}
                     smooth={theme.scrolls.smooth}

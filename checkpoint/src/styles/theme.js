@@ -37,7 +37,7 @@ const fonts = {
 
     fontColor: colors.primary,
 
-    fontSizeNav: "25px",
+    fontSizeNav: "1vw",
     fontSizeTitle: "40px",
     fontSizeHead: "30px",
     fontSizePara: "15px",
