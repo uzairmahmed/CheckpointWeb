@@ -4,23 +4,10 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { baseStyles, podcastStyles } from '../styles';
 import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 
 export default class StaffMember extends Component {
     render() {
-        let textAligned;
-        let imgAligned;
-
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            textAligned = 'center'
-            imgAligned = 'center'
-        } else {
-            textAligned = 'left'
-            imgAligned = 'right'
-        }
-
         return (
             <Col style={podcastStyles.card}>
                 <Row>

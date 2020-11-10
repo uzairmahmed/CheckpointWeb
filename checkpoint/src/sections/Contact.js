@@ -7,7 +7,7 @@ import { Element } from 'react-scroll';
 import ContactCard from "../components/ContactCard";
 import Col from 'react-bootstrap/Col';
 
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+// import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 import socialsFile from '../cms/socials.json'
 
