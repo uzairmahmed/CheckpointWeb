@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Row from 'react-bootstrap/esm/Row';
 import Image from 'react-bootstrap/Image';
 
 import Nav from 'react-bootstrap/Nav'
