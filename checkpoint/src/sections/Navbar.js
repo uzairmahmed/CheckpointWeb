@@ -34,20 +34,23 @@ export default class NavbarSec extends Component {
             <Navbar expand={'md'} fixed={'top'}
                 style={{
                     ...navbarStyles.bar,
-                    backgroundColor: 'rgb(255,255,255,' + opacity + ')',
+                    // width: '100%',
+                    flexDirection:'row',
+                    backgroundColor: 'rgb(255,255,255)',
                     boxShadow: theme.spacing.shadow + ' ' + navbarColor
                 }}
             >
-                <Row style={{ justifyContent: 'space-between', alignItems: 'center', width: '100%', margin: 0 }}>
+                {/* <Row style={{ justifyContent: 'space-evenly', alignItems: 'center', display:'flex'}}> */}
                     <Navbar.Brand style={navbarStyles.brand} href="#home">
                         <Image
                             style={{
                                 ...navbarStyles.brandImg,
-                                width: Math.min(Math.max(window.innerWidth/2.75, 200), 350)
+                                width: Math.min(Math.max(window.innerWidth/2.75, 100), 350)
                             }}
                             src={require('../assets/logo/long-logo.png')}
                         />
                     </Navbar.Brand>
+                    <div style={{flex:1}}></div>
                     <div style = {{marginRight: theme.spacing.regular}}>
                         <Navbar.Toggle style={{ justifyContent: 'right' }} aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse style={{ alignItems: 'center' }} id="basic-navbar-nav">
@@ -59,7 +62,7 @@ export default class NavbarSec extends Component {
                             </Nav>
                         </Navbar.Collapse>
                     </div>
-                </Row>
+                {/* </Row> */}
             </Navbar>
         )
     }
