@@ -27,23 +27,8 @@ export default class NavbarSec extends Component {
     }
 
     render() {
-        let logoComponent
         const opacity = 0.5+ Math.min(this.state.currentScrollHeight / 250,)
         const navbarColor = "rgb(158, 158, 158, " + String(opacity) + ")"
-
-        if ((this.state.currentScrollHeight > 100) && (!window.matchMedia("(max-width: 768px)").matches)) {
-            logoComponent = (<></>)
-        } else {
-            logoComponent = (
-                <Image
-                    style={{
-                        ...navbarStyles.brandImg,
-                        height: Math.min(Math.max(window.innerWidth/50, 15), 25)
-                    }}
-                    src={require('../assets/logo/long-logo.png')}
-                />
-            )
-        }
 
         return (
             <Navbar expand={'md'} fixed={'top'}
