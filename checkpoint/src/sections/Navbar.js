@@ -46,7 +46,9 @@ export default class NavbarSec extends Component {
                                 ...navbarStyles.brandImg,
                                 width: Math.min(Math.max(window.innerWidth/2.75, 100), 350)
                             }}
-                            src={require('../assets/logo/long-logo.png')}
+                        // src={require('../assets/logo/long-logo.png')}
+                        src={require('../assets/logo/logo.svg')}
+                        
                         />
                     </Navbar.Brand>
                     <div style={{flex:1}}></div>
