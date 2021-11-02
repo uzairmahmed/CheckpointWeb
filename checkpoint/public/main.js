@@ -24,7 +24,7 @@ const getHosts = () => {
                 ilist.push(i)
                 if (ilist.length === files.length) {
                     const sortedList = hostlist.sort((a, b) => {
-                        return a.id < b.id ? 1 : -1
+                        return a.order < b.order ? 1 : -1
                     })
                     let data = JSON.stringify(sortedList)
                     fs.writeFileSync("src/cms/hosts.json", data)
