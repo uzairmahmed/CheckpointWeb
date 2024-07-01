@@ -15,7 +15,7 @@ export default class Hosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: require('../assets/backgrounds/6.jpg')
+      background: '/assets/backgrounds/6.jpg'
     }
   }
   render() {

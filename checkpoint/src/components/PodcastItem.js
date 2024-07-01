@@ -24,13 +24,13 @@ export default class StaffMember extends Component {
                     <a href={this.props.spotify} style= {{ alignSelf: "center"}}>
                         <Image
                             style={podcastStyles.icon}
-                            src={require("../assets/icons/spotify_podcast.png")}
+                            src={'/assets/icons/spotify_podcast.png'}
                         />
                     </a>
                     <a href={this.props.apple} style= {{ alignSelf: "center"}}>
                         <Image
                             style={podcastStyles.icon}
-                            src={require("../assets/icons/apple_podcast.png")}
+                            src={'/assets/icons/apple_podcast.png'}
                         />
                     </a>
                 </Row>

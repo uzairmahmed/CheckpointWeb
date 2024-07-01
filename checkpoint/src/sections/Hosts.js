@@ -13,7 +13,7 @@ export default class Hosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: require('../assets/backgrounds/4.jpg')
+      background: '/assets/backgrounds/4.jpg'
     }
   }
   render() {
@@ -26,11 +26,12 @@ export default class Hosts extends Component {
             <Row xs={1} sm={1} md={1} lg={2} xl={2}
               style={hostStyles.container}>
               {hostsFile.map((host) => {
+                console.log(host);
                 return (
                   <StaffMember
                     name={host.name}
                     desc={host.body}
-                    pfp={require("../assets" + host.profilepic)}//.replace('/images',''))}
+                    pfp={"/assets" + host.profilepic}//.replace('/images',''))}
                     link={host.link}
                     linktext={host.link_title}
                     link2={host.link2}

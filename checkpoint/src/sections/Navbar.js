@@ -44,10 +44,10 @@ export default class NavbarSec extends Component {
                         <Image
                             style={{
                                 ...navbarStyles.brandImg,
-                                width: Math.min(Math.max(window.innerWidth/2.75, 100), 350)
+                                width: Math.min(Math.max(window.innerWidth/2.75, 100), 250)
                             }}
                         // src={require('../assets/logo/long-logo.png')}
-                        src={require('../assets/logo/logo.svg')}
+                        src={'/assets/logo/logo.svg'}
                         
                         />
                     </Navbar.Brand>
