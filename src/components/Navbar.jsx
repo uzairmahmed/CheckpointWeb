@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { FaBars, FaTimes, FaMicrophone } from 'react-icons/fa';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { FaBars, FaTimes } from "react-icons/fa";
+import LogoImage from "../assets/logo2.svg";
 
 const Nav = styled.nav`
   background-color: #fff;
@@ -20,24 +21,29 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #4CAF50;
-  
+  color: #4caf50;
+
   span {
     margin-left: 10px;
   }
 `;
 
+const LogoImg = styled.img`
+  height: 40px;
+  width: auto;
+`;
+
 const NavMenu = styled.ul`
   display: flex;
   list-style: none;
-    @media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 90vh;
     position: absolute;
     top: 80px;
-    left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+    left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
     opacity: 1;
     transition: all 0.5s ease;
     background-color: #fff;
@@ -49,7 +55,7 @@ const NavItem = styled.li`
   height: 80px;
   display: flex;
   align-items: center;
-  
+
   @media screen and (max-width: 768px) {
     height: 60px;
     width: 100%;
@@ -67,12 +73,12 @@ const NavLink = styled.a`
   height: 100%;
   cursor: pointer;
   font-size: 1.2rem;
-  
+
   &:hover {
-    color: #4CAF50;
+    color: #4caf50;
     transition: all 0.3s ease;
   }
-  
+
   @media screen and (max-width: 768px) {
     width: 100%;
     display: flex;
@@ -84,7 +90,7 @@ const NavLink = styled.a`
 
 const MobileIcon = styled.div`
   display: none;
-  
+
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -99,30 +105,35 @@ const MobileIcon = styled.div`
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-    return (
+  return (
     <Nav>
       <Logo>
-        <FaMicrophone color="#4CAF50" />
-        <span>Checkpoint NOW</span>
+        <LogoImg src={LogoImage} alt="Checkpoint NOW Logo" />
       </Logo>
-      
+
       <MobileIcon onClick={toggle}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </MobileIcon>
-      
+
       <NavMenu isOpen={isOpen}>
         <NavItem>
-          <NavLink href="#episodes" onClick={toggle}>Episodes</NavLink>
+          <NavLink href="#episodes" onClick={toggle}>
+            Episodes
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#hosts" onClick={toggle}>Hosts</NavLink>
+          <NavLink href="#hosts" onClick={toggle}>
+            Hosts
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#contact" onClick={toggle}>Contact</NavLink>
+          <NavLink href="#contact" onClick={toggle}>
+            Contact
+          </NavLink>
         </NavItem>
       </NavMenu>
     </Nav>
