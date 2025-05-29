@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaLinkedin, FaGlobe } from 'react-icons/fa';
 
 const SectionContainer = styled.section`
   padding: 80px 0;
@@ -104,21 +104,30 @@ const Hosts = ({ lightBg }) => {
   const hosts = [
     {
       id: 1,
-      name: 'Alex Johnson',
-      role: 'Host & Producer',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Afreen Shariff',
+      role: 'Host',
+      bio: 'Endocrinologist and Associate Professor at Duke University School of Medicine. Co-founder of Citrus Oncology, specializing in endocrine disorders in cancer patients with a focus on improving healthcare delivery and equity.',
+      twitter: 'https://x.com/afreenshariffmd',
+      website: 'https://citrusoncology.com',
+      linkedin: 'https://scholars.duke.edu/person/afreen.shariff',
     },
     {
       id: 2,
-      name: 'Sarah Williams',
-      role: 'Co-Host',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Pauline Funchain',
+      role: 'Host',
+      bio: 'Medical oncologist at Stanford Cancer specializing in melanoma, high risk skin cancers, immunotherapy toxicities, and hereditary cancer genetics. Co-director of the Immunotherapy Toxicity Working Group at Stanford.',
+      twitter: 'https://x.com/funchainmd',
+      website: 'https://med.stanford.edu/profiles/pauline-funchain',
+      linkedin: '#',
     },
     {
       id: 3,
-      name: 'Michael Brown',
-      role: 'Audio Engineer',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Tian Zhang',
+      role: 'Former Host',
+      bio: 'Associate Professor at UT Southwestern Medical Center specializing in genitourinary malignancies. A clinical trialist and translational researcher who co-hosted Checkpoint NOW from 2020 to 2024.',
+      twitter: 'https://x.com/TiansterZhang',
+      website: 'https://utswmed.org/doctors/tian-zhang/',
+      linkedin: '#',
     },
   ];
 
@@ -135,15 +144,21 @@ const Hosts = ({ lightBg }) => {
                 <HostRole>{host.role}</HostRole>
                 <HostBio lightBg={lightBg}>{host.bio}</HostBio>
                 <SocialLinks>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaTwitter />
-                  </SocialLink>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaInstagram />
-                  </SocialLink>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaLinkedin />
-                  </SocialLink>
+                  {host.twitter && (
+                    <SocialLink href={host.twitter} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaTwitter />
+                    </SocialLink>
+                  )}
+                  {host.website && (
+                    <SocialLink href={host.website} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaGlobe />
+                    </SocialLink>
+                  )}
+                  {host.linkedin && (
+                    <SocialLink href={host.linkedin} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaLinkedin />
+                    </SocialLink>
+                  )}
                 </SocialLinks>
               </HostContent>
             </HostCard>
