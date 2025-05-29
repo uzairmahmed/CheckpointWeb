@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaSpotify, FaApple } from 'react-icons/fa';
 import { getPodcastInfo, getSpotifyPodcastInfo } from '../utils/api';
+import LogoImage from '../assets/logo1.svg';
 
 const HeroContainer = styled.div`
   background-color: #f9f9f9;
@@ -132,15 +133,10 @@ const LoadingOverlay = styled.div`
   z-index: 4;
 `;
 
-const PodcastArtwork = styled.div`
+const PodcastLogo = styled.img`
   margin-bottom: 30px;
   width: 180px;
-  height: 180px;
-  border-radius: 10px;
-  background-image: ${({ url }) => url ? `url(${url})` : 'none'};
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  height: auto;
 `;
 
 const Hero = () => {
@@ -182,11 +178,9 @@ const Hero = () => {
         <HeroPattern />
       </HeroBg>
       <HeroContent>
-        {podcastInfo?.artworkUrl600 && (
-          <PodcastArtwork url={podcastInfo.artworkUrl600} />
-        )}
+        <PodcastLogo src={LogoImage} alt="Checkpoint NOW Logo" />
         <HeroH1>
-          {podcastInfo?.trackName || 'Checkpoint NOW'}
+          Checkpoint NOW
         </HeroH1>
         <HeroP description>
           All you need to know about the latest evidence based practice in the diagnosis and management of immune related toxicities from cancer therapies straight from the experts in the field.
