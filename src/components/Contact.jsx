@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaPaperPlane, FaTwitter } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const SectionContainer = styled.section`
   padding: 5rem 0;
@@ -262,20 +263,11 @@ const Contact = ({ lightBg }) => {
               </ContactItem>
               <ContactItem>
                 <ContactIcon lightBg={lightBg}>
-                  <FaPhone />
+                  <FaXTwitter />
                 </ContactIcon>
                 <ContactDetails>
-                  <ContactLabel lightBg={lightBg}>Phone</ContactLabel>
-                  <ContactValue lightBg={lightBg}>(123) 456-7890</ContactValue>
-                </ContactDetails>
-              </ContactItem>
-              <ContactItem>
-                <ContactIcon lightBg={lightBg}>
-                  <FaMapMarkerAlt />
-                </ContactIcon>
-                <ContactDetails>
-                  <ContactLabel lightBg={lightBg}>Address</ContactLabel>
-                  <ContactValue lightBg={lightBg}>123 Podcast Street, Audio City</ContactValue>
+                  <ContactLabel lightBg={lightBg}>X</ContactLabel>
+                  <ContactValue lightBg={lightBg}>@CheckpointNowMD</ContactValue>
                 </ContactDetails>
               </ContactItem>
             </ContactItems>

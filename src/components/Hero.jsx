@@ -274,20 +274,23 @@ const Hero = () => {
           <PodcastLogo src={LogoImage} alt="Checkpoint NOW Logo" />
           <PlatformsWrapper>
             <PlatformItem
-              href={spotifyInfo?.external_urls?.spotify || "#"}
-              target="_blank"
-              platform="spotify"
-            >
-              <FaSpotify />
-              <span>Listen on Spotify</span>
-            </PlatformItem>
-            <PlatformItem
-              href={podcastInfo?.collectionViewUrl || "#"}
+              href={
+                "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4"
+              }
               target="_blank"
               platform="apple"
             >
               <FaApple />
               <span>Apple Podcasts</span>
+            </PlatformItem>
+
+            <PlatformItem
+              href={"https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I#"}
+              target="_blank"
+              platform="spotify"
+            >
+              <FaSpotify />
+              <span>Listen on Spotify</span>
             </PlatformItem>
           </PlatformsWrapper>
         </LeftColumn>

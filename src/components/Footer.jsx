@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaMicrophone,
-} from "react-icons/fa";
+import { FaApple, FaSpotify, FaXTwitter, FaEnvelope } from "react-icons/fa6";
+import LogoImage from "../assets/logo2.svg";
 
 const FooterContainer = styled.footer`
   background-color: #f9f9f9;
@@ -105,12 +100,41 @@ const SocialLink = styled.a`
   }
 `;
 
+const LogoImg = styled.img`
+  height: 40px;
+  width: auto;
+`;
+
 const FooterBottom = styled.div`
   border-top: 1px solid #ddd;
   padding-top: 20px;
   text-align: center;
   color: #999;
   font-size: 14px;
+`;
+
+const PlatformItem = styled.a`
+  display: flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: ${(props) => (props.platform === "spotify" ? "#fff" : "#000")};
+  background-color: ${(props) =>
+    props.platform === "spotify" ? "#1DB954" : "#f2f2f2"};
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  svg {
+    font-size: 18px;
+    margin-right: 8px;
+  }
 `;
 
 const Footer = () => {
@@ -121,26 +145,26 @@ const Footer = () => {
           {" "}
           <FooterColumn>
             <FooterLogo>
-              <FaMicrophone />
-              <span>Checkpoint NOW</span>
+              <LogoImg src={LogoImage} alt="Checkpoint NOW Logo" />
             </FooterLogo>
+
             <FooterDescription>
               All you need to know about the latest evidence based practice in
               the diagnosis and management of immune related toxicities from
               cancer therapies straight from the experts in the field.
             </FooterDescription>
             <SocialLinks>
-              <SocialLink href="#">
-                <FaFacebook />
+              <SocialLink href="mailto:checkpointnowpodcast@gmail.com">
+                <FaEnvelope />
               </SocialLink>
-              <SocialLink href="#">
-                <FaTwitter />
+              <SocialLink href="https://x.com/CheckpointNowMD">
+                <FaXTwitter />
               </SocialLink>
-              <SocialLink href="#">
-                <FaInstagram />
+              <SocialLink href="https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4">
+                <FaApple />
               </SocialLink>
-              <SocialLink href="#">
-                <FaYoutube />
+              <SocialLink href="https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I">
+                <FaSpotify />
               </SocialLink>
             </SocialLinks>
           </FooterColumn>
@@ -159,28 +183,29 @@ const Footer = () => {
             </FooterLinks>
           </FooterColumn>
           <FooterColumn>
-            <FooterTitle>Resources</FooterTitle>
-            <FooterLinks>
-              <FooterLink>
-                <a href="#">Support</a>
-              </FooterLink>
-              <FooterLink>
-                <a href="#">Privacy Policy</a>
-              </FooterLink>
-              <FooterLink>
-                <a href="#">Terms of Service</a>
-              </FooterLink>
-              <FooterLink>
-                <a href="#">FAQ</a>
-              </FooterLink>
-            </FooterLinks>
-          </FooterColumn>
-          <FooterColumn>
-            <FooterTitle>Subscribe</FooterTitle>
+            <FooterTitle>Follow Us</FooterTitle>
             <FooterDescription>
-              Subscribe to our newsletter to get updates on new episodes,
-              behind-the-scenes content, and exclusive offers.
+              Follow us for in-depth conversations with leading 
+              oncologists and researchers in this rapidly evolving field.
             </FooterDescription>
+            <PlatformItem
+              href={"https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I#"}
+              target="_blank"
+              platform="spotify"
+            >
+              <FaSpotify />
+              <span>Listen on Spotify</span>
+            </PlatformItem>
+            <PlatformItem
+              href={
+                "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4"
+              }
+              target="_blank"
+              platform="apple"
+            >
+              <FaApple />
+              <span>Apple Podcasts</span>
+            </PlatformItem>
           </FooterColumn>
         </FooterGrid>
         <FooterBottom>
