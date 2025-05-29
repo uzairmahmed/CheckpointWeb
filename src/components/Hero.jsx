@@ -45,11 +45,44 @@ const HeroPattern = styled.div`
 const HeroContent = styled.div`
   z-index: 3;
   max-width: 1200px;
+  width: 100%;
   padding: 8px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+  @media screen and (max-width: 968px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  flex: 1;
+  padding-right: 20px;
+  
+  @media screen and (max-width: 968px) {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+`;
+
+const RightColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+  
+  @media screen and (max-width: 968px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const HeroH1 = styled.h1`
@@ -88,11 +121,19 @@ const HeroP = styled.p`
 const PlatformsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 60px;
-  gap: 40px;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 250px;
   
-  @media screen and (max-width: 768px) {
-    gap: 20px;
+  @media screen and (max-width: 968px) {
+    flex-direction: row;
+    max-width: 100%;
+  }
+  
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -135,7 +176,7 @@ const LoadingOverlay = styled.div`
 
 const PodcastLogo = styled.img`
   margin-bottom: 30px;
-  width: 180px;
+  width: 300px;
   height: auto;
 `;
 
@@ -178,45 +219,49 @@ const Hero = () => {
         <HeroPattern />
       </HeroBg>
       <HeroContent>
-        <PodcastLogo src={LogoImage} alt="Checkpoint NOW Logo" />
-        <HeroH1>
-          Checkpoint NOW
-        </HeroH1>
-        <HeroP description>
-          All you need to know about the latest evidence based practice in the diagnosis and management of immune related toxicities from cancer therapies straight from the experts in the field.
-        </HeroP>
-        {podcastInfo && (
-          <HeroP>
-            {`By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.country} • ${podcastInfo.trackCount} episodes • Released: ${new Date(podcastInfo.releaseDate).toLocaleDateString()}`}
+        <LeftColumn>
+          <PodcastLogo src={LogoImage} alt="Checkpoint NOW Logo" />
+          <PlatformsWrapper>
+            <PlatformItem href={spotifyInfo?.external_urls?.spotify || '#'} target="_blank" platform="spotify">
+              <FaSpotify />
+              <span>Listen on Spotify</span>
+            </PlatformItem>
+            <PlatformItem href={podcastInfo?.collectionViewUrl || '#'} target="_blank" platform="apple">
+              <FaApple />
+              <span>Listen on Apple Podcasts</span>
+            </PlatformItem>
+          </PlatformsWrapper>
+          
+          {podcastInfo?.genreIds && (
+            <div style={{ marginTop: '40px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+              {podcastInfo.genres.map((genre, index) => (
+                <span key={index} style={{ 
+                  background: '#eee', 
+                  padding: '5px 15px', 
+                  borderRadius: '20px', 
+                  fontSize: '14px',
+                  color: '#333'
+                }}>
+                  {genre}
+                </span>
+              ))}
+            </div>
+          )}
+        </LeftColumn>
+        
+        <RightColumn>
+          <HeroH1>
+            Checkpoint NOW
+          </HeroH1>
+          <HeroP description>
+            All you need to know about the latest evidence based practice in the diagnosis and management of immune related toxicities from cancer therapies straight from the experts in the field.
           </HeroP>
-        )}
-        
-        <PlatformsWrapper>
-          <PlatformItem href={spotifyInfo?.external_urls?.spotify || '#'} target="_blank" platform="spotify">
-            <FaSpotify />
-            <span>Listen on Spotify</span>
-          </PlatformItem>
-          <PlatformItem href={podcastInfo?.collectionViewUrl || '#'} target="_blank" platform="apple">
-            <FaApple />
-            <span>Listen on Apple Podcasts</span>
-          </PlatformItem>
-        </PlatformsWrapper>
-        
-        {podcastInfo?.genreIds && (
-          <div style={{ marginTop: '40px', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {podcastInfo.genres.map((genre, index) => (
-              <span key={index} style={{ 
-                background: '#eee', 
-                padding: '5px 15px', 
-                borderRadius: '20px', 
-                fontSize: '14px',
-                color: '#333'
-              }}>
-                {genre}
-              </span>
-            ))}
-          </div>
-        )}
+          {podcastInfo && (
+            <HeroP>
+              {`By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.country} • ${podcastInfo.trackCount} episodes • Released: ${new Date(podcastInfo.releaseDate).toLocaleDateString()}`}
+            </HeroP>
+          )}
+        </RightColumn>
       </HeroContent>
     </HeroContainer>
   );
