@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <Hero />
       <Episodes lightBg={true} />
-      <Hosts lightBg={true} />
+      <Hosts lightBg={false} />
       <Contact lightBg={true} />
       <Footer />
     </>

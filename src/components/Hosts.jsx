@@ -8,39 +8,73 @@ import zhangImg from '../assets/zhang.jpg';
 import { FaLink, FaXTwitter } from 'react-icons/fa6';
 
 const SectionContainer = styled.section`
-  padding: 80px 0;
-  background-color: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#1a1a1a')};
+  padding: 5rem 0;
+  background-color: ${({ lightBg }) => (lightBg ? 'var(--light)' : 'var(--dark)')};
+  position: relative;
+  overflow: hidden;
+`;
+
+const BackgroundPattern = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${({ lightBg }) => 
+    lightBg 
+      ? 'radial-gradient(var(--primary-light) 3px, transparent 3px)'
+      : 'radial-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 3px)'
+  };
+  background-size: 30px 30px;
+  opacity: 0.2;
 `;
 
 const SectionWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
+  position: relative;
+  z-index: 2;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 40px;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 3rem;
   text-align: center;
-  color: ${({ lightBg }) => (lightBg ? '#2d2d2d' : '#fff')};
+  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
   
   span {
-    color: #4CAF50;
-  }
-  
-  @media screen and (max-width: 768px) {
-    font-size: 32px;
+    color: var(--primary);
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: ${({ lightBg }) => 
+        lightBg ? 'var(--primary-light)' : 'rgba(76, 175, 80, 0.3)'};
+      z-index: -1;
+      border-radius: 10px;
+    }
   }
 `;
 
 const HostsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
   
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   
   @media screen and (max-width: 480px) {
@@ -49,63 +83,108 @@ const HostsGrid = styled.div`
 `;
 
 const HostCard = styled.div`
-  background-color: ${({ lightBg }) => (lightBg ? '#fff' : '#2d2d2d')};
-  border-radius: 10px;
+  background-color: ${({ lightBg }) => (lightBg ? 'var(--white)' : 'var(--secondary)')};
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-hover);
   }
 `;
 
 const HostImage = styled.div`
-  height: 250px;
-  background-color: #4CAF50;
-  background-image: url(${props => props.image});
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.9;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(${props => props.image});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+  
+  ${HostCard}:hover &:before {
+    transform: scale(1.1);
+  }
 `;
 
 const HostContent = styled.div`
-  padding: 20px;
-  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 const HostName = styled.h3`
-  margin-bottom: 5px;
-  color: ${({ lightBg }) => (lightBg ? '#2d2d2d' : '#fff')};
+  margin-bottom: 0.25rem;
+  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  font-size: 1.25rem;
 `;
 
 const HostRole = styled.p`
-  color: #4CAF50;
+  color: var(--primary);
   font-weight: 600;
-  margin-bottom: 15px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
 `;
 
 const HostBio = styled.p`
-  color: ${({ lightBg }) => (lightBg ? '#666' : '#ccc')};
-  font-size: 14px;
-  margin-bottom: 20px;
+  color: ${({ lightBg }) => (lightBg ? 'var(--gray-600)' : 'var(--gray-300)')};
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  justify-content: center;
   gap: 15px;
 `;
 
 const SocialLink = styled.a`
-  color: ${({ lightBg }) => (lightBg ? '#2d2d2d' : '#e0e0e0')};
-  font-size: 18px;
-  transition: all 0.3s ease;
+  color: ${({ lightBg }) => (lightBg ? 'var(--gray-700)' : 'var(--gray-400)')};
+  font-size: 1.2rem;
+  transition: var(--transition);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: ${({ lightBg }) => (lightBg ? 'var(--gray-100)' : 'rgba(255, 255, 255, 0.1)')};
   
   &:hover {
-    color: #4CAF50;
+    color: var(--primary);
+    background-color: ${({ lightBg }) => (lightBg ? 'var(--primary-light)' : 'rgba(76, 175, 80, 0.2)')};
+    transform: translateY(-3px);
   }
 `;
 
@@ -143,6 +222,7 @@ const Hosts = ({ lightBg }) => {
 
   return (
     <SectionContainer id="hosts" lightBg={lightBg}>
+      <BackgroundPattern lightBg={lightBg} />
       <SectionWrapper>
         <SectionTitle lightBg={lightBg}>Meet the <span>Hosts</span></SectionTitle>
         <HostsGrid>
@@ -155,17 +235,17 @@ const Hosts = ({ lightBg }) => {
                 <HostBio lightBg={lightBg}>{host.bio}</HostBio>
                 <SocialLinks>
                   {host.twitter && (
-                    <SocialLink href={host.twitter} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                    <SocialLink href={host.twitter} target="_blank" rel="noopener noreferrer" lightBg={lightBg} title="Twitter">
                       <FaXTwitter />
                     </SocialLink>
                   )}
                   {host.website && (
-                    <SocialLink href={host.website} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                    <SocialLink href={host.website} target="_blank" rel="noopener noreferrer" lightBg={lightBg} title="Website">
                       <FaLink />
                     </SocialLink>
                   )}
                   {host.website2 && (
-                    <SocialLink href={host.website2} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                    <SocialLink href={host.website2} target="_blank" rel="noopener noreferrer" lightBg={lightBg} title="Academic Profile">
                       <FaLink />
                     </SocialLink>
                   )}

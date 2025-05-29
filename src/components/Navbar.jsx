@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 import LogoImage from "../assets/logo2.svg";
 
 const Nav = styled.nav`
-  background-color: #fff;
+  background-color: var(--white);
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,8 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
 `;
 
 const Logo = styled.div`
@@ -21,10 +22,11 @@ const Logo = styled.div`
   align-items: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #4caf50;
+  color: var(--primary);
 
   span {
     margin-left: 10px;
+    font-family: "Montserrat", sans-serif;
   }
 `;
 
@@ -40,14 +42,15 @@ const NavMenu = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
-    position: absolute;
+    height: 100vh;
+    position: fixed;
     top: 80px;
     left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
     opacity: 1;
     transition: all 0.5s ease;
-    background-color: #fff;
+    background-color: var(--white);
     padding-top: 20px;
+    z-index: 99;
   }
 `;
 
@@ -65,18 +68,35 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled.a`
-  color: #2d2d2d;
+  color: var(--secondary);
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 1.2rem;
   height: 100%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+    transform: translateX(-50%);
+  }
 
   &:hover {
-    color: #4caf50;
-    transition: all 0.3s ease;
+    color: var(--primary);
+
+    &:after {
+      width: 30px;
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -85,6 +105,11 @@ const NavLink = styled.a`
     justify-content: center;
     padding: 2rem;
     font-size: 1.5rem;
+
+    &:after {
+      bottom: auto;
+      top: 55px;
+    }
   }
 `;
 
@@ -99,18 +124,43 @@ const MobileIcon = styled.div`
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: #e0e0e0;
+    color: var(--secondary);
   }
 `;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  // Close mobile menu when clicking a link
+  const closeMobileMenu = () => {
+    if (isOpen) setIsOpen(false);
+  };
+
   return (
-    <Nav>
+    <Nav
+      style={{
+        boxShadow: scrolled ? "var(--box-shadow)" : "none",
+        height: scrolled ? "70px" : "80px",
+      }}
+    >
       <Logo>
         <LogoImg src={LogoImage} alt="Checkpoint NOW Logo" />
       </Logo>
@@ -121,17 +171,17 @@ const Navbar = () => {
 
       <NavMenu isOpen={isOpen}>
         <NavItem>
-          <NavLink href="#episodes" onClick={toggle}>
+          <NavLink href="#episodes" onClick={closeMobileMenu}>
             Episodes
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#hosts" onClick={toggle}>
+          <NavLink href="#hosts" onClick={closeMobileMenu}>
             Hosts
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#contact" onClick={toggle}>
+          <NavLink href="#contact" onClick={closeMobileMenu}>
             Contact
           </NavLink>
         </NavItem>
