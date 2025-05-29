@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { getPodcastEpisodes } from '../utils/api';
-import { FaPlay } from 'react-icons/fa';
+import { getPodcastEpisodes, getSpotifyPodcastEpisodes } from '../utils/api';
+import { FaPlay, FaSpotify } from 'react-icons/fa';
 
 const SectionContainer = styled.section`
   padding: 80px 0;
@@ -109,6 +109,35 @@ const EpisodeButton = styled.button`
   }
 `;
 
+const SpotifyButton = styled.a`
+  background-color: #1DB954;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: #1aa34a;
+  }
+  
+  svg {
+    margin-right: 8px;
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
 const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -129,21 +158,35 @@ const ErrorContainer = styled.div`
 
 const Episodes = ({ lightBg }) => {
   const [episodes, setEpisodes] = useState([]);
+  const [spotifyEpisodes, setSpotifyEpisodes] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
   useEffect(() => {
-    const fetchEpisodes = async () => {
+    const fetchAllEpisodes = async () => {
       try {
         setLoading(true);
-        const data = await getPodcastEpisodes('1541046019');
         
-        // Filter out the first item (podcast info) and take only episodes
-        const episodeData = data.results
+        // Fetch iTunes episodes data
+        const iTunesData = await getPodcastEpisodes('1541046019');
+        const episodeData = iTunesData.results
           .filter(item => item.kind === 'podcast-episode')
           .slice(0, 3); // Get first 3 episodes
         
         setEpisodes(episodeData);
+        
+        // Fetch Spotify episodes data
+        const spotifyData = await getSpotifyPodcastEpisodes('11GGvT4Mk6IVelrJpXgY6I', 20);
+        
+        // Map Spotify episodes to a lookup object by name for easier matching
+        const spotifyMap = {};
+        spotifyData.items.forEach(episode => {
+          // Clean up the name for comparison
+          const cleanName = episode.name.replace(/^Episode \d+:?\s*/i, '').trim();
+          spotifyMap[cleanName] = episode;
+        });
+        
+        setSpotifyEpisodes(spotifyMap);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching episodes:', err);
@@ -152,7 +195,7 @@ const Episodes = ({ lightBg }) => {
       }
     };
     
-    fetchEpisodes();
+    fetchAllEpisodes();
   }, []);
   
   // Format date to readable format
@@ -163,6 +206,29 @@ const Episodes = ({ lightBg }) => {
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  // Find matching Spotify episode
+  const findSpotifyMatch = (itunesEpisode) => {
+    if (!itunesEpisode || !spotifyEpisodes) return null;
+    
+    // Clean up the name for better matching
+    const title = itunesEpisode.trackName;
+    const cleanTitle = title.replace(/^Episode \d+:?\s*/i, '').trim();
+    
+    // Try direct match
+    if (spotifyEpisodes[cleanTitle]) {
+      return spotifyEpisodes[cleanTitle];
+    }
+    
+    // Try fuzzy match
+    for (const key in spotifyEpisodes) {
+      if (key.includes(cleanTitle) || cleanTitle.includes(key)) {
+        return spotifyEpisodes[key];
+      }
+    }
+    
+    return null;
   };
 
   return (
@@ -176,29 +242,40 @@ const Episodes = ({ lightBg }) => {
           <ErrorContainer>{error}</ErrorContainer>
         ) : (
           <EpisodeGrid>
-            {episodes.map((episode) => (
-              <EpisodeCard key={episode.trackId} lightBg={lightBg}>
-                <EpisodeImage imageUrl={episode.artworkUrl600}>
-                  <EpisodeNumber>
-                    {episode.trackName}
-                  </EpisodeNumber>
-                </EpisodeImage>
-                <EpisodeContent>
-                  <EpisodeTitle lightBg={lightBg}>
-                    {episode.trackName}
-                  </EpisodeTitle>
-                  <EpisodeDescription lightBg={lightBg}>
-                    {episode.description}
-                  </EpisodeDescription>
-                  <small style={{ color: lightBg ? '#888' : '#aaa', display: 'block', margin: '10px 0' }}>
-                    {formatDate(episode.releaseDate)}
-                  </small>
-                  <EpisodeButton as="a" href={episode.trackViewUrl} target="_blank" rel="noopener noreferrer">
-                    <FaPlay /> Listen Now
-                  </EpisodeButton>
-                </EpisodeContent>
-              </EpisodeCard>
-            ))}
+            {episodes.map((episode) => {
+              const spotifyEpisode = findSpotifyMatch(episode);
+              return (
+                <EpisodeCard key={episode.trackId} lightBg={lightBg}>
+                  <EpisodeImage imageUrl={episode.artworkUrl600}>
+                    <EpisodeNumber>
+                      {episode.trackName}
+                    </EpisodeNumber>
+                  </EpisodeImage>
+                  <EpisodeContent>
+                    <EpisodeTitle lightBg={lightBg}>
+                      {episode.trackName}
+                    </EpisodeTitle>
+                    <EpisodeDescription lightBg={lightBg}>
+                      {episode.description}
+                    </EpisodeDescription>
+                    <small style={{ color: lightBg ? '#888' : '#aaa', display: 'block', margin: '10px 0' }}>
+                      {formatDate(episode.releaseDate)}
+                    </small>
+                    <ButtonGroup>
+                      <EpisodeButton as="a" href={episode.trackViewUrl} target="_blank" rel="noopener noreferrer">
+                        <FaPlay /> Apple Podcasts
+                      </EpisodeButton>
+                      
+                      {spotifyEpisode && (
+                        <SpotifyButton href={spotifyEpisode.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                          <FaSpotify /> Spotify
+                        </SpotifyButton>
+                      )}
+                    </ButtonGroup>
+                  </EpisodeContent>
+                </EpisodeCard>
+              );
+            })}
           </EpisodeGrid>
         )}
       </SectionWrapper>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaPlay, FaSpotify, FaApple, FaGoogle } from 'react-icons/fa';
-import { getPodcastInfo } from '../utils/api';
+import { getPodcastInfo, getSpotifyPodcastInfo } from '../utils/api';
 
 const HeroContainer = styled.div`
   background-color: #f9f9f9;
@@ -175,27 +175,34 @@ const PodcastArtwork = styled.div`
 
 const Hero = () => {
   const [podcastInfo, setPodcastInfo] = useState(null);
+  const [spotifyInfo, setSpotifyInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPodcastInfo = async () => {
+    const fetchPodcastData = async () => {
       try {
         setLoading(true);
-        const data = await getPodcastInfo('1541046019');
         
-        if (data.results && data.results.length > 0) {
-          setPodcastInfo(data.results[0]);
+        // Fetch iTunes data
+        const iTunesData = await getPodcastInfo('1541046019');
+        if (iTunesData.results && iTunesData.results.length > 0) {
+          setPodcastInfo(iTunesData.results[0]);
         }
+        
+        // Fetch Spotify data
+        const spotifyData = await getSpotifyPodcastInfo('11GGvT4Mk6IVelrJpXgY6I');
+        setSpotifyInfo(spotifyData);
+        
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching podcast info:', err);
+        console.error('Error fetching podcast information:', err);
         setError('Failed to load podcast information');
         setLoading(false);
       }
     };
     
-    fetchPodcastInfo();
+    fetchPodcastData();
   }, []);
 
   return (
@@ -213,7 +220,7 @@ const Hero = () => {
         </HeroH1>
         <HeroP>
           {podcastInfo ? `By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.country}` : 
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat, urna turpis accumsan mi, vel sagittis odio eros vel nisi.'}
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
         </HeroP>
         {podcastInfo && (
           <HeroP>
@@ -231,7 +238,7 @@ const Hero = () => {
         </HeroBtnWrapper>
         
         <PlatformsWrapper>
-          <PlatformItem href={podcastInfo?.trackViewUrl || '#'} target="_blank">
+          <PlatformItem href={spotifyInfo?.external_urls?.spotify || '#'} target="_blank">
             <FaSpotify />
             <span>Spotify</span>
           </PlatformItem>
