@@ -66,12 +66,14 @@ const SectionTitle = styled.h2`
 const ContactGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 3rem;
-  
+
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
+
 
 const ContactForm = styled.form`
   display: flex;
@@ -220,7 +222,7 @@ const Contact = ({ lightBg }) => {
       <SectionWrapper>
         <SectionTitle lightBg={lightBg}>Get in <span>Touch</span></SectionTitle>
         <ContactGrid>
-          <ContactForm>
+          {/* <ContactForm>
             <FormGroup>
               <FormLabel lightBg={lightBg}>Name</FormLabel>
               <FormInput type="text" placeholder="Your full name" lightBg={lightBg} />
@@ -245,7 +247,7 @@ const Contact = ({ lightBg }) => {
               <FaPaperPlane />
               Send Message
             </FormButton>
-          </ContactForm>
+          </ContactForm> */}
           
           <ContactInfo>
             <ContactText lightBg={lightBg}>
