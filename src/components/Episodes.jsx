@@ -229,11 +229,31 @@ const ErrorContainer = styled.div`
   text-align: center;
 `;
 
+const ViewAllButton = styled.button`
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 2rem auto 0;
+  display: block;
+  transition: var(--transition);
+  
+  &:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+`;
+
 const Episodes = ({ lightBg }) => {
   const [episodes, setEpisodes] = useState([]);
   const [spotifyEpisodes, setSpotifyEpisodes] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showAll, setShowAll] = useState(false);
   
   useEffect(() => {
     const fetchAllEpisodes = async () => {
@@ -243,8 +263,7 @@ const Episodes = ({ lightBg }) => {
         // Fetch iTunes episodes data
         const iTunesData = await getPodcastEpisodes('1541046019');
         const episodeData = iTunesData.results
-          .filter(item => item.kind === 'podcast-episode')
-          .slice(0, 3); // Get first 3 episodes
+          .filter(item => item.kind === 'podcast-episode');
         
         setEpisodes(episodeData);
         
@@ -317,6 +336,13 @@ const Episodes = ({ lightBg }) => {
     return match ? `EP ${match[1]}` : 'EP';
   };
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
+  // Get the episodes to display based on showAll state
+  const displayEpisodes = showAll ? episodes : episodes.slice(0, 3);
+
   return (
     <SectionContainer id="episodes" lightBg={lightBg}>
       <BackgroundPattern lightBg={lightBg} />
@@ -328,53 +354,61 @@ const Episodes = ({ lightBg }) => {
         ) : error ? (
           <ErrorContainer>{error}</ErrorContainer>
         ) : (
-          <EpisodeGrid>
-            {episodes.map((episode) => {
-              const spotifyEpisode = findSpotifyMatch(episode);
-              const episodeNumber = getEpisodeNumber(episode.trackName);
-              return (
-                <EpisodeCard key={episode.trackId} lightBg={lightBg}>
-                  <EpisodeImage imageUrl={episode.artworkUrl600}>
-                    <EpisodeNumber>{episodeNumber}</EpisodeNumber>
-                  </EpisodeImage>
-                  <EpisodeContent>
-                    <EpisodeTitle lightBg={lightBg}>
-                      {episode.trackName.replace(/^Episode \d+:?\s*/i, '')}
-                    </EpisodeTitle>
-                    <EpisodeDescription lightBg={lightBg}>
-                      {episode.description}
-                    </EpisodeDescription>
-                    
-                    <EpisodeMeta lightBg={lightBg}>
-                      <div>
-                        <FaCalendarAlt />
-                        <span style={{ marginLeft: '5px' }}>{formatDate(episode.releaseDate)}</span>
-                      </div>
+          <>
+            <EpisodeGrid>
+              {displayEpisodes.map((episode) => {
+                const spotifyEpisode = findSpotifyMatch(episode);
+                const episodeNumber = getEpisodeNumber(episode.trackName);
+                return (
+                  <EpisodeCard key={episode.trackId} lightBg={lightBg}>
+                    <EpisodeImage imageUrl={episode.artworkUrl600}>
+                      <EpisodeNumber>{episodeNumber}</EpisodeNumber>
+                    </EpisodeImage>
+                    <EpisodeContent>
+                      <EpisodeTitle lightBg={lightBg}>
+                        {episode.trackName.replace(/^Episode \d+:?\s*/i, '')}
+                      </EpisodeTitle>
+                      <EpisodeDescription lightBg={lightBg}>
+                        {episode.description}
+                      </EpisodeDescription>
                       
-                      {spotifyEpisode && (
+                      <EpisodeMeta lightBg={lightBg}>
                         <div>
-                          <FaClock />
-                          <span style={{ marginLeft: '5px' }}>{formatDuration(spotifyEpisode.duration_ms)}</span>
+                          <FaCalendarAlt />
+                          <span style={{ marginLeft: '5px' }}>{formatDate(episode.releaseDate)}</span>
                         </div>
-                      )}
-                    </EpisodeMeta>
-                    
-                    <ButtonGroup>
-                      <EpisodeButton href={episode.trackViewUrl} target="_blank" rel="noopener noreferrer">
-                        <FaPlay /> Apple
-                      </EpisodeButton>
+                        
+                        {spotifyEpisode && (
+                          <div>
+                            <FaClock />
+                            <span style={{ marginLeft: '5px' }}>{formatDuration(spotifyEpisode.duration_ms)}</span>
+                          </div>
+                        )}
+                      </EpisodeMeta>
                       
-                      {spotifyEpisode && (
-                        <SpotifyButton href={spotifyEpisode.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                          <FaSpotify /> Spotify
-                        </SpotifyButton>
-                      )}
-                    </ButtonGroup>
-                  </EpisodeContent>
-                </EpisodeCard>
-              );
-            })}
-          </EpisodeGrid>
+                      <ButtonGroup>
+                        <EpisodeButton href={episode.trackViewUrl} target="_blank" rel="noopener noreferrer">
+                          <FaPlay /> Apple
+                        </EpisodeButton>
+                        
+                        {spotifyEpisode && (
+                          <SpotifyButton href={spotifyEpisode.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                            <FaSpotify /> Spotify
+                          </SpotifyButton>
+                        )}
+                      </ButtonGroup>
+                    </EpisodeContent>
+                  </EpisodeCard>
+                );
+              })}
+            </EpisodeGrid>
+            
+            {episodes.length > 3 && (
+              <ViewAllButton onClick={toggleShowAll}>
+                {showAll ? 'Show Less' : 'View All Episodes'}
+              </ViewAllButton>
+            )}
+          </>
         )}
       </SectionWrapper>
     </SectionContainer>
