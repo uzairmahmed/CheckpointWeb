@@ -1,0 +1,37 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "collectionId": 1541046019,
+      "trackId": 1541046019,
+      "artistName": "Afreen Shariff",
+      "collectionName": "Checkpoint NOW",
+      "trackName": "Checkpoint NOW",
+      "collectionCensoredName": "Checkpoint NOW",
+      "trackCensoredName": "Checkpoint NOW",
+      "collectionViewUrl": "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4",
+      "feedUrl": "https://anchor.fm/s/2e8ecfa0/podcast/rss",
+      "trackViewUrl": "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4",
+      "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/8a/61/9e/8a619eda-4370-c5a1-6a8d-8ed30aac4c4f/mza_12824525197888336905.jpg/30x30bb.jpg",
+      "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/8a/61/9e/8a619eda-4370-c5a1-6a8d-8ed30aac4c4f/mza_12824525197888336905.jpg/60x60bb.jpg",
+      "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/8a/61/9e/8a619eda-4370-c5a1-6a8d-8ed30aac4c4f/mza_12824525197888336905.jpg/100x100bb.jpg",
+      "collectionPrice": 0.0,
+      "trackPrice": 0.0,
+      "collectionHdPrice": 0,
+      "releaseDate": "2025-05-16T18:52:00Z",
+      "collectionExplicitness": "notExplicit",
+      "trackExplicitness": "cleaned",
+      "trackCount": 31,
+      "trackTimeMillis": 2410,
+      "country": "USA",
+      "currency": "USD",
+      "primaryGenreName": "Medicine",
+      "contentAdvisoryRating": "Clean",
+      "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/8a/61/9e/8a619eda-4370-c5a1-6a8d-8ed30aac4c4f/mza_12824525197888336905.jpg/600x600bb.jpg",
+      "genreIds": ["1518", "26", "1512"],
+      "genres": ["Medicine", "Podcasts", "Health & Fitness"]
+    }
+  ]
+}
