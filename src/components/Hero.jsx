@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { FaPlay, FaSpotify, FaApple, FaGoogle } from 'react-icons/fa';
+import { FaSpotify, FaApple } from 'react-icons/fa';
 import { getPodcastInfo, getSpotifyPodcastInfo } from '../utils/api';
 
 const HeroContainer = styled.div`
@@ -72,49 +72,15 @@ const HeroH1 = styled.h1`
 const HeroP = styled.p`
   margin-top: 24px;
   color: #666;
-  font-size: 24px;
-  max-width: 700px;
+  font-size: ${props => props.description ? '24px' : '16px'};
+  max-width: ${props => props.description ? '700px' : '600px'};
   
   @media screen and (max-width: 768px) {
-    font-size: 20px;
+    font-size: ${props => props.description ? '20px' : '14px'};
   }
   
   @media screen and (max-width: 480px) {
-    font-size: 18px;
-  }
-`;
-
-const HeroBtnWrapper = styled.div`
-  margin-top: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  
-  @media screen and (max-width: 480px) {
-    flex-direction: column;
-  }
-`;
-
-const Button = styled.a`
-  border-radius: 50px;
-  background: ${({ primary }) => (primary ? '#4CAF50' : 'transparent')};
-  white-space: nowrap;
-  padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
-  color: ${({ dark }) => (dark ? '#010606' : '#fff')};
-  font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
-  outline: none;
-  border: ${({ primary }) => (primary ? 'none' : '2px solid #4CAF50')};
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: ${({ primary }) => (primary ? '#388E3C' : '#4CAF50')};
+    font-size: ${props => props.description ? '18px' : '12px'};
   }
 `;
 
@@ -131,19 +97,23 @@ const PlatformsWrapper = styled.div`
 
 const PlatformItem = styled.a`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  color: #666;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: ${props => props.platform === 'spotify' ? '#fff' : '#000'};
+  background-color: ${props => props.platform === 'spotify' ? '#1DB954' : '#f2f2f2'};
   text-decoration: none;
   transition: all 0.3s ease;
+  font-weight: bold;
   
   &:hover {
-    color: #4CAF50;
+    opacity: 0.9;
+    transform: scale(1.05);
   }
   
   svg {
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-right: 8px;
   }
 `;
 
@@ -216,39 +186,25 @@ const Hero = () => {
           <PodcastArtwork url={podcastInfo.artworkUrl600} />
         )}
         <HeroH1>
-          {podcastInfo?.trackName || 'Checkpoint'}
+          {podcastInfo?.trackName || 'Checkpoint NOW'}
         </HeroH1>
-        <HeroP>
-          {podcastInfo ? `By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.country}` : 
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+        <HeroP description>
+          All you need to know about the latest evidence based practice in the diagnosis and management of immune related toxicities from cancer therapies straight from the experts in the field.
         </HeroP>
         {podcastInfo && (
           <HeroP>
-            {`${podcastInfo.trackCount} episodes • Released: ${new Date(podcastInfo.releaseDate).toLocaleDateString()}`}
+            {`By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.country} • ${podcastInfo.trackCount} episodes • Released: ${new Date(podcastInfo.releaseDate).toLocaleDateString()}`}
           </HeroP>
         )}
-        <HeroBtnWrapper>
-          <Button href={podcastInfo?.trackViewUrl || '#'} target="_blank" primary big fontBig>
-            <FaPlay style={{ marginRight: '8px' }} />
-            Latest Episode
-          </Button>
-          <Button href={podcastInfo?.collectionViewUrl || '#'} target="_blank" primary big fontBig>
-            Subscribe Now
-          </Button>
-        </HeroBtnWrapper>
         
         <PlatformsWrapper>
-          <PlatformItem href={spotifyInfo?.external_urls?.spotify || '#'} target="_blank">
+          <PlatformItem href={spotifyInfo?.external_urls?.spotify || '#'} target="_blank" platform="spotify">
             <FaSpotify />
-            <span>Spotify</span>
+            <span>Listen on Spotify</span>
           </PlatformItem>
-          <PlatformItem href={podcastInfo?.collectionViewUrl || '#'} target="_blank">
+          <PlatformItem href={podcastInfo?.collectionViewUrl || '#'} target="_blank" platform="apple">
             <FaApple />
-            <span>Apple</span>
-          </PlatformItem>
-          <PlatformItem href={podcastInfo?.feedUrl ? `https://podcasts.google.com/?feed=${encodeURIComponent(podcastInfo.feedUrl)}` : '#'} target="_blank">
-            <FaGoogle />
-            <span>Google</span>
+            <span>Listen on Apple Podcasts</span>
           </PlatformItem>
         </PlatformsWrapper>
         

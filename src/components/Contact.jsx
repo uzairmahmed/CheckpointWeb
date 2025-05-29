@@ -187,7 +187,7 @@ const Contact = ({ lightBg }) => {
                 </ContactIcon>
                 <ContactDetails>
                   <ContactLabel lightBg={lightBg}>Email</ContactLabel>
-                  <ContactValue lightBg={lightBg}>info@checkpoint.com</ContactValue>
+                  <ContactValue lightBg={lightBg}>checkpointnowpodcast@gmail.com</ContactValue>
                 </ContactDetails>
               </ContactItem>
               <ContactItem>

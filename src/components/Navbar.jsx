@@ -107,7 +107,7 @@ const Navbar = () => {
     <Nav>
       <Logo>
         <FaMicrophone color="#4CAF50" />
-        <span>Checkpoint</span>
+        <span>Checkpoint NOW</span>
       </Logo>
       
       <MobileIcon onClick={toggle}>
