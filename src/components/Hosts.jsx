@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+
+// Import host images
+import shariffImg from '../assets/shariff.jpg';
+import funchainImg from '../assets/funchain.jpg';
+import zhangImg from '../assets/zhang.jpg';
+import { FaLink, FaXTwitter } from 'react-icons/fa6';
 
 const SectionContainer = styled.section`
   padding: 80px 0;
@@ -59,7 +64,11 @@ const HostCard = styled.div`
 const HostImage = styled.div`
   height: 250px;
   background-color: #4CAF50;
-  opacity: 0.8;
+  background-image: url(${props => props.image});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
 `;
 
 const HostContent = styled.div`
@@ -104,21 +113,31 @@ const Hosts = ({ lightBg }) => {
   const hosts = [
     {
       id: 1,
-      name: 'Alex Johnson',
-      role: 'Host & Producer',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Afreen Shariff',
+      role: 'Host & Co-founder',
+      bio: 'Endocrinologist and Associate Professor at Duke University School of Medicine. Co-founder of Citrus Oncology, specializing in endocrine disorders in cancer patients with a focus on improving healthcare delivery and equity.',
+      twitter: 'https://x.com/afreenshariffmd',
+      website: 'https://citrusoncology.com',
+      website2: 'https://scholars.duke.edu/person/afreen.shariff',
+      image: shariffImg,
     },
     {
       id: 2,
-      name: 'Sarah Williams',
-      role: 'Co-Host',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Pauline Funchain',
+      role: 'Host',
+      bio: 'Medical oncologist at Stanford Cancer specializing in melanoma, high risk skin cancers, immunotherapy toxicities, and hereditary cancer genetics. Co-director of the Immunotherapy Toxicity Working Group at Stanford.',
+      twitter: 'https://x.com/funchainmd',
+      website: 'https://med.stanford.edu/profiles/pauline-funchain',
+      image: funchainImg,
     },
     {
       id: 3,
-      name: 'Michael Brown',
-      role: 'Audio Engineer',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida, justo vel tincidunt consequat.',
+      name: 'Dr. Tian Zhang',
+      role: 'Former Host',
+      bio: 'Associate Professor at UT Southwestern Medical Center specializing in genitourinary malignancies. A clinical trialist and translational researcher who co-hosted Checkpoint NOW from 2020 to 2024.',
+      twitter: 'https://x.com/TiansterZhang',
+      website: 'https://utswmed.org/doctors/tian-zhang/',
+      image: zhangImg,
     },
   ];
 
@@ -129,21 +148,27 @@ const Hosts = ({ lightBg }) => {
         <HostsGrid>
           {hosts.map((host) => (
             <HostCard key={host.id} lightBg={lightBg}>
-              <HostImage />
+              <HostImage image={host.image} />
               <HostContent>
                 <HostName lightBg={lightBg}>{host.name}</HostName>
                 <HostRole>{host.role}</HostRole>
                 <HostBio lightBg={lightBg}>{host.bio}</HostBio>
                 <SocialLinks>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaTwitter />
-                  </SocialLink>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaInstagram />
-                  </SocialLink>
-                  <SocialLink href="#" target="_blank" lightBg={lightBg}>
-                    <FaLinkedin />
-                  </SocialLink>
+                  {host.twitter && (
+                    <SocialLink href={host.twitter} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaXTwitter />
+                    </SocialLink>
+                  )}
+                  {host.website && (
+                    <SocialLink href={host.website} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaLink />
+                    </SocialLink>
+                  )}
+                  {host.website2 && (
+                    <SocialLink href={host.website2} target="_blank" rel="noopener noreferrer" lightBg={lightBg}>
+                      <FaLink />
+                    </SocialLink>
+                  )}
                 </SocialLinks>
               </HostContent>
             </HostCard>
