@@ -4,11 +4,13 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 
-// Log every request
+app.use(cors({ origin: true }));
+
 app.use((req, res, next) => {
   logger.info(`Incoming request: ${req.method} ${req.url}`);
   next();
@@ -17,7 +19,8 @@ app.use((req, res, next) => {
 let spotifyToken = null;
 let tokenExpiry = null;
 
-// 🔑 Token fetch with caching
+
+
 const getSpotifyToken = async () => {
   if (spotifyToken && tokenExpiry && Date.now() < tokenExpiry) {
     return spotifyToken;
@@ -38,8 +41,8 @@ const getSpotifyToken = async () => {
     {
       headers: {
         Authorization: `Basic ${auth}`,
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     }
   );
 
@@ -49,7 +52,11 @@ const getSpotifyToken = async () => {
   return spotifyToken;
 };
 
-// 🎧 Proxy route for Spotify API
+
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Firebase Function" });
+});
+
 app.get("/api/spotify/*", async (req, res) => {
   try {
     const token = await getSpotifyToken();
@@ -69,23 +76,22 @@ app.get("/api/spotify/*", async (req, res) => {
   }
 });
 
-// 🎙️ Proxy to iTunes: GET /api/itunes/*
 app.get("/api/itunes/*", async (req, res) => {
-    try {
-      const itunesPath = req.params[0];
-      const response = await axios.get(`https://itunes.apple.com/${itunesPath}`, {
-        params: req.query
-      });
-  
-      res.set('Cache-Control', 'public, max-age=300');
-      res.json(response.data);
-    } catch (err) {
-      logger.error("iTunes proxy error", err.message);
-      res.status(500).json({ error: "iTunes API error" });
-    }
-  });
+  try {
+    const itunesPath = req.params[0];
+    const response = await axios.get(`https://itunes.apple.com/${itunesPath}`, {
+      params: req.query
+    });
 
-// 🪄 SSR fallback
+    res.set("Cache-Control", "public, max-age=300");
+    res.json(response.data);
+  } catch (err) {
+    logger.error("iTunes proxy error", err.message);
+    res.status(500).json({ error: "iTunes API error" });
+  }
+});
+
+// ✅ SSR fallback
 app.get("*", (req, res) => {
   const html = fs.readFileSync(path.join(__dirname, "../dist/index.html"), "utf8");
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");

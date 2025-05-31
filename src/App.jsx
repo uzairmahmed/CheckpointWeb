@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -8,6 +8,14 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
+
+  useEffect(() => {
+    fetch("/api/hello")
+    .then(res => res.json())
+    .then(data => console.log(data.message)) // Should log "Hello World"
+    .catch(err => console.error("API error:", err));
+  }
+  , [])
   return (
     <>
       <Navbar />
