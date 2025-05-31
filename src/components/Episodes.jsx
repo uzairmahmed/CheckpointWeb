@@ -252,7 +252,8 @@ const Episodes = ({ lightBg }) => {
   const [episodes, setEpisodes] = useState([]);
   const [spotifyEpisodes, setSpotifyEpisodes] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [itunesError, setItunesError] = useState(null);
+  const [spotifyError, setSpotifyError] = useState(null);
   const [showAll, setShowAll] = useState(false);
   
   useEffect(() => {
@@ -261,28 +262,39 @@ const Episodes = ({ lightBg }) => {
         setLoading(true);
         
         // Fetch iTunes episodes data
-        const iTunesData = await getPodcastEpisodes('1541046019');
-        const episodeData = iTunesData.results
-          .filter(item => item.kind === 'podcast-episode');
-        
-        setEpisodes(episodeData);
+        try {
+          const iTunesData = await getPodcastEpisodes('1541046019');
+          const episodeData = iTunesData.results
+            .filter(item => item.kind === 'podcast-episode');
+          
+          setEpisodes(episodeData);
+        } catch (err) {
+          console.error('Error fetching iTunes episodes:', err);
+          setItunesError('Failed to load episodes. Please try again later.');
+        }
         
         // Fetch Spotify episodes data
-        const spotifyData = await getSpotifyPodcastEpisodes('11GGvT4Mk6IVelrJpXgY6I', 20);
+        try {
+          const spotifyData = await getSpotifyPodcastEpisodes('11GGvT4Mk6IVelrJpXgY6I', 20);
+          
+          // Map Spotify episodes to a lookup object by name for easier matching
+          const spotifyMap = {};
+          spotifyData.items.forEach(episode => {
+            // Clean up the name for comparison
+            const cleanName = episode.name.replace(/^Episode \d+:?\s*/i, '').trim();
+            spotifyMap[cleanName] = episode;
+          });
+          
+          setSpotifyEpisodes(spotifyMap);
+        } catch (err) {
+          console.error('Error fetching Spotify episodes:', err);
+          setSpotifyError('Failed to load Spotify data.');
+        }
         
-        // Map Spotify episodes to a lookup object by name for easier matching
-        const spotifyMap = {};
-        spotifyData.items.forEach(episode => {
-          // Clean up the name for comparison
-          const cleanName = episode.name.replace(/^Episode \d+:?\s*/i, '').trim();
-          spotifyMap[cleanName] = episode;
-        });
-        
-        setSpotifyEpisodes(spotifyMap);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching episodes:', err);
-        setError('Failed to load episodes. Please try again later.');
+        console.error('General error fetching episodes:', err);
+        setItunesError('Failed to load episodes. Please try again later.');
         setLoading(false);
       }
     };
@@ -351,8 +363,8 @@ const Episodes = ({ lightBg }) => {
         
         {loading ? (
           <LoadingContainer lightBg={lightBg}>Loading episodes...</LoadingContainer>
-        ) : error ? (
-          <ErrorContainer>{error}</ErrorContainer>
+        ) : itunesError ? (
+          <ErrorContainer>{itunesError}</ErrorContainer>
         ) : (
           <>
             <EpisodeGrid>
@@ -391,8 +403,12 @@ const Episodes = ({ lightBg }) => {
                           <FaPlay /> Apple
                         </EpisodeButton>
                         
-                        {spotifyEpisode && (
+                        {spotifyEpisode ? (
                           <SpotifyButton href={spotifyEpisode.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                            <FaSpotify /> Spotify
+                          </SpotifyButton>
+                        ) : spotifyError && (
+                          <SpotifyButton href="https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I#" target="_blank" rel="noopener noreferrer">
                             <FaSpotify /> Spotify
                           </SpotifyButton>
                         )}
