@@ -171,7 +171,7 @@ const LoadingOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -260,7 +260,7 @@ const Hero = () => {
     <HeroContainer>
       {loading && (
         <LoadingOverlay>
-          <div>
+          <div style={{ textAlign: "center" }}>
             <FaHeadphones style={{ fontSize: "40px", marginBottom: "15px" }} />
             <p>Loading podcast information...</p>
           </div>
