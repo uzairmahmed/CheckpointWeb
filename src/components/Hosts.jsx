@@ -93,7 +93,6 @@ const HostCard = styled.div`
   flex-direction: column;
   
   &:hover {
-    transform: translateY(-10px);
     box-shadow: var(--box-shadow-hover);
   }
 `;

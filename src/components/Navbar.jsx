@@ -23,6 +23,7 @@ const Logo = styled.div`
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary);
+  padding-top: 10px;
 
   span {
     margin-left: 10px;
@@ -130,20 +131,20 @@ const MobileIcon = styled.div`
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  // const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 80) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 80) {
+  //       setScrolled(true);
+  //     } else {
+  //       setScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -157,8 +158,9 @@ const Navbar = () => {
   return (
     <Nav
       style={{
-        boxShadow: scrolled ? "var(--box-shadow)" : "none",
-        height: scrolled ? "70px" : "80px",
+        padding: "10px 30px",
+        boxShadow:  "none",
+        height: "80px",
       }}
     >
       <Logo>

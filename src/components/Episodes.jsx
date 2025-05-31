@@ -84,7 +84,6 @@ const EpisodeCard = styled.div`
   flex-direction: column;
   
   &:hover {
-    transform: translateY(-10px);
     box-shadow: var(--box-shadow-hover);
   }
 `;
@@ -173,11 +172,13 @@ const EpisodeButton = styled.a`
   text-decoration: none;
   transition: var(--transition);
   flex: 1;
+  color: white;
   justify-content: center;
   
   &:hover {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
+    color: white;
   }
   
   svg {
@@ -200,10 +201,14 @@ const SpotifyButton = styled.a`
   transition: var(--transition);
   flex: 1;
   justify-content: center;
-  
+  color: white;
+
+
   &:hover {
     background-color: #1aa34a;
     transform: translateY(-3px);
+    color: white;
+
   }
   
   svg {

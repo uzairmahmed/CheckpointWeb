@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaEnvelope, FaPaperPlane, FaTwitter } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import React from "react";
+import styled from "styled-components";
+import { FaEnvelope, FaPaperPlane, FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const SectionContainer = styled.section`
   padding: 5rem 0;
-  background-color: ${({ lightBg }) => (lightBg ? 'var(--light)' : 'var(--dark)')};
+  background-color: ${({ lightBg }) =>
+    lightBg ? "var(--light)" : "var(--dark)"};
   position: relative;
   overflow: hidden;
 `;
@@ -16,11 +17,10 @@ const BackgroundPattern = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${({ lightBg }) => 
-    lightBg 
-      ? 'radial-gradient(var(--primary-light) 3px, transparent 3px)'
-      : 'radial-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 3px)'
-  };
+  background: ${({ lightBg }) =>
+    lightBg
+      ? "radial-gradient(var(--primary-light) 3px, transparent 3px)"
+      : "radial-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 3px)"};
   background-size: 30px 30px;
   opacity: 0.2;
 `;
@@ -38,42 +38,49 @@ const SectionTitle = styled.h2`
   font-weight: 800;
   margin-bottom: 3rem;
   text-align: center;
-  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  color: ${({ lightBg }) => (lightBg ? "var(--secondary)" : "var(--white)")};
   position: relative;
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
-  
+
   span {
     color: var(--primary);
     position: relative;
-    
+
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 5px;
       left: 0;
       width: 100%;
       height: 8px;
-      background-color: ${({ lightBg }) => 
-        lightBg ? 'var(--primary-light)' : 'rgba(76, 175, 80, 0.3)'};
+      background-color: ${({ lightBg }) =>
+        lightBg ? "var(--primary-light)" : "rgba(76, 175, 80, 0.3)"};
       z-index: -1;
       border-radius: 10px;
     }
   }
 `;
 
-const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+// const ContactGrid = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-columns: 1fr;
+//   gap: 3rem;
 
+//   @media screen and (max-width: 768px) {
+//     grid-template-columns: 1fr;
+//   }
+// `;
+
+const ContactGrid = styled.div`
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
   }
 `;
-
 
 const ContactForm = styled.form`
   display: flex;
@@ -88,7 +95,7 @@ const FormGroup = styled.div`
 
 const FormLabel = styled.label`
   margin-bottom: 0.5rem;
-  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  color: ${({ lightBg }) => (lightBg ? "var(--secondary)" : "var(--white)")};
   font-weight: 600;
   font-size: 0.9rem;
 `;
@@ -96,36 +103,42 @@ const FormLabel = styled.label`
 const FormInput = styled.input`
   padding: 12px 16px;
   border-radius: var(--border-radius);
-  border: 1px solid ${({ lightBg }) => (lightBg ? 'var(--gray-300)' : 'var(--gray-700)')};
-  background-color: ${({ lightBg }) => (lightBg ? 'var(--white)' : 'rgba(255, 255, 255, 0.05)')};
-  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  border: 1px solid
+    ${({ lightBg }) => (lightBg ? "var(--gray-300)" : "var(--gray-700)")};
+  background-color: ${({ lightBg }) =>
+    lightBg ? "var(--white)" : "rgba(255, 255, 255, 0.05)"};
+  color: ${({ lightBg }) => (lightBg ? "var(--secondary)" : "var(--white)")};
   font-size: 1rem;
   transition: var(--transition);
-  
+
   &:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px ${({ lightBg }) => 
-      lightBg ? 'rgba(76, 175, 80, 0.2)' : 'rgba(76, 175, 80, 0.1)'};
+    box-shadow: 0 0 0 3px
+      ${({ lightBg }) =>
+        lightBg ? "rgba(76, 175, 80, 0.2)" : "rgba(76, 175, 80, 0.1)"};
   }
 `;
 
 const FormTextarea = styled.textarea`
   padding: 12px 16px;
   border-radius: var(--border-radius);
-  border: 1px solid ${({ lightBg }) => (lightBg ? 'var(--gray-300)' : 'var(--gray-700)')};
-  background-color: ${({ lightBg }) => (lightBg ? 'var(--white)' : 'rgba(255, 255, 255, 0.05)')};
-  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  border: 1px solid
+    ${({ lightBg }) => (lightBg ? "var(--gray-300)" : "var(--gray-700)")};
+  background-color: ${({ lightBg }) =>
+    lightBg ? "var(--white)" : "rgba(255, 255, 255, 0.05)"};
+  color: ${({ lightBg }) => (lightBg ? "var(--secondary)" : "var(--white)")};
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
   transition: var(--transition);
-  
+
   &:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px ${({ lightBg }) => 
-      lightBg ? 'rgba(76, 175, 80, 0.2)' : 'rgba(76, 175, 80, 0.1)'};
+    box-shadow: 0 0 0 3px
+      ${({ lightBg }) =>
+        lightBg ? "rgba(76, 175, 80, 0.2)" : "rgba(76, 175, 80, 0.1)"};
   }
 `;
 
@@ -145,13 +158,13 @@ const FormButton = styled.button`
   gap: 8px;
   align-self: flex-start;
   margin-top: 0.5rem;
-  
+
   &:hover {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
     box-shadow: var(--box-shadow);
   }
-  
+
   &:active {
     transform: translateY(-1px);
   }
@@ -161,13 +174,19 @@ const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ContactText = styled.p`
-  color: ${({ lightBg }) => (lightBg ? 'var(--gray-600)' : 'var(--gray-300)')};
+  color: ${({ lightBg }) => (lightBg ? "var(--gray-600)" : "var(--gray-300)")};
   margin-bottom: 1.5rem;
   font-size: 1rem;
   line-height: 1.6;
+  text-align: center;
 `;
 
 const ContactItems = styled.div`
@@ -186,15 +205,15 @@ const ContactIcon = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${({ lightBg }) => 
-    lightBg ? 'var(--primary-light)' : 'rgba(76, 175, 80, 0.2)'};
+  background-color: ${({ lightBg }) =>
+    lightBg ? "var(--primary-light)" : "rgba(76, 175, 80, 0.2)"};
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--primary);
   font-size: 1.2rem;
   transition: var(--transition);
-  
+
   ${ContactItem}:hover & {
     background-color: var(--primary);
     color: var(--white);
@@ -205,13 +224,13 @@ const ContactIcon = styled.div`
 const ContactDetails = styled.div``;
 
 const ContactLabel = styled.h4`
-  color: ${({ lightBg }) => (lightBg ? 'var(--secondary)' : 'var(--white)')};
+  color: ${({ lightBg }) => (lightBg ? "var(--secondary)" : "var(--white)")};
   margin-bottom: 0.25rem;
   font-size: 1.1rem;
 `;
 
 const ContactValue = styled.p`
-  color: ${({ lightBg }) => (lightBg ? 'var(--gray-600)' : 'var(--gray-400)')};
+  color: ${({ lightBg }) => (lightBg ? "var(--gray-600)" : "var(--gray-400)")};
   font-size: 0.9rem;
 `;
 
@@ -220,7 +239,9 @@ const Contact = ({ lightBg }) => {
     <SectionContainer id="contact" lightBg={lightBg}>
       <BackgroundPattern lightBg={lightBg} />
       <SectionWrapper>
-        <SectionTitle lightBg={lightBg}>Get in <span>Touch</span></SectionTitle>
+        <SectionTitle lightBg={lightBg}>
+          Get in <span>Touch</span>
+        </SectionTitle>
         <ContactGrid>
           {/* <ContactForm>
             <FormGroup>
@@ -248,30 +269,40 @@ const Contact = ({ lightBg }) => {
               Send Message
             </FormButton>
           </ContactForm> */}
-          
+
           <ContactInfo>
             <ContactText lightBg={lightBg}>
-              Have questions about the podcast, interested in being a guest, or want to share your feedback? Reach out to us using the contact form or through our details below.
+              Have questions about the podcast, interested in being a guest, or
+              want to share your feedback? Reach out to us using the contact
+              form or through our details below.
             </ContactText>
             <ContactItems>
-              <ContactItem>
-                <ContactIcon lightBg={lightBg}>
-                  <FaEnvelope />
-                </ContactIcon>
-                <ContactDetails>
-                  <ContactLabel lightBg={lightBg}>Email</ContactLabel>
-                  <ContactValue lightBg={lightBg}>checkpointnowpodcast@gmail.com</ContactValue>
-                </ContactDetails>
-              </ContactItem>
-              <ContactItem>
-                <ContactIcon lightBg={lightBg}>
-                  <FaXTwitter />
-                </ContactIcon>
-                <ContactDetails>
-                  <ContactLabel lightBg={lightBg}>X</ContactLabel>
-                  <ContactValue lightBg={lightBg}>@CheckpointNowMD</ContactValue>
-                </ContactDetails>
-              </ContactItem>
+              <a href="mailto:checkpointnowpodcast@gmail.com">
+                <ContactItem>
+                  <ContactIcon lightBg={lightBg}>
+                    <FaEnvelope />
+                  </ContactIcon>
+                  <ContactDetails>
+                    <ContactLabel lightBg={lightBg}>Email</ContactLabel>
+                    <ContactValue lightBg={lightBg}>
+                      checkpointnowpodcast@gmail.com
+                    </ContactValue>
+                  </ContactDetails>
+                </ContactItem>
+              </a>
+              <a href="https://x.com/CheckpointNowMD">
+                <ContactItem>
+                  <ContactIcon lightBg={lightBg}>
+                    <FaXTwitter />
+                  </ContactIcon>
+                  <ContactDetails>
+                    <ContactLabel lightBg={lightBg}>X</ContactLabel>
+                    <ContactValue lightBg={lightBg}>
+                      @CheckpointNowMD
+                    </ContactValue>
+                  </ContactDetails>
+                </ContactItem>
+              </a>
             </ContactItems>
           </ContactInfo>
         </ContactGrid>
