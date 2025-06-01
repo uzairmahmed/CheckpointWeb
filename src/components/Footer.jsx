@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FaApple, FaSpotify, FaXTwitter, FaEnvelope } from "react-icons/fa6";
 import LogoImage from "../assets/logo2.svg";
+import AspireLogo from "../assets/aspire.svg";
+import CitrusLogo from "../assets/citrus.svg";
 
 const FooterContainer = styled.footer`
   background-color: #f9f9f9;
@@ -113,6 +115,12 @@ const FooterBottom = styled.div`
   font-size: 14px;
 `;
 
+const PlatformItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 const PlatformItem = styled.a`
   display: flex;
   align-items: center;
@@ -125,6 +133,7 @@ const PlatformItem = styled.a`
   transition: all 0.3s ease;
   font-weight: 500;
   margin-bottom: 10px;
+  font-size: 12px;
 
   &:hover {
     transform: translateY(-2px);
@@ -153,6 +162,7 @@ const Footer = () => {
               the diagnosis and management of immune related toxicities from
               cancer therapies straight from the experts in the field.
             </FooterDescription>
+
             <SocialLinks>
               <SocialLink href="mailto:checkpointnowpodcast@gmail.com">
                 <FaEnvelope />
@@ -180,34 +190,61 @@ const Footer = () => {
               <FooterLink>
                 <a href="#contact">Contact Us</a>
               </FooterLink>
+              
             </FooterLinks>
+            <PlatformItems>
+              <PlatformItem
+                href={"https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I#"}
+                target="_blank"
+                platform="spotify"
+              >
+                <FaSpotify />
+                <span>Listen on Spotify</span>
+              </PlatformItem>
+              <PlatformItem
+                href={
+                  "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4"
+                }
+                target="_blank"
+                platform="apple"
+              >
+                <FaApple />
+                <span>Apple Podcasts</span>
+              </PlatformItem>
+            </PlatformItems>
+
           </FooterColumn>
           <FooterColumn>
-            <FooterTitle>Follow Us</FooterTitle>
+            <FooterTitle>Partners & Sponsors</FooterTitle>
             <FooterDescription>
-              Follow us for in-depth conversations with leading 
-              oncologists and researchers in this rapidly evolving field.
+              <strong>ASPIRE</strong> (Alliance for Support and Prevention of
+              Immune-Related Adverse Events). Learn more through{" "}
+              <a
+                href="https://myconnection.asco.org/communities/community-home?CommunityKey=102ef19a-5b8d-4d67-8106-019388b78b2a"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                the ASCO Community
+              </a>
+              .
             </FooterDescription>
-            <PlatformItem
-              href={"https://open.spotify.com/show/11GGvT4Mk6IVelrJpXgY6I#"}
-              target="_blank"
-              platform="spotify"
-            >
-              <FaSpotify />
-              <span>Listen on Spotify</span>
-            </PlatformItem>
-            <PlatformItem
-              href={
-                "https://podcasts.apple.com/us/podcast/checkpoint-now/id1541046019?uo=4"
-              }
-              target="_blank"
-              platform="apple"
-            >
-              <FaApple />
-              <span>Apple Podcasts</span>
-            </PlatformItem>
+
+            <FooterDescription>
+              <strong>Citrus Oncology</strong>, a virtual specialty care
+              platform focused on improving outcomes for patients undergoing
+              cancer treatment. Learn more at{" "}
+              <a
+                href="https://www.citrusoncology.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                citrusoncology.com
+              </a>
+              .
+            </FooterDescription>
           </FooterColumn>
         </FooterGrid>
+
         <FooterBottom>
           <p>
             &copy; {new Date().getFullYear()} Checkpoint. All rights reserved.
