@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FaSpotify, FaApple, FaHeadphones } from "react-icons/fa";
 import { getPodcastInfo, getSpotifyPodcastInfo } from "../utils/api";
 import LogoImage from "../assets/logo1.svg";
+import AspireLogo from "../assets/aspire.svg";
+import CitrusLogo from "../assets/citrus.svg";
 
 const HeroContainer = styled.div`
   background: linear-gradient(135deg, var(--light) 0%, var(--gray-100) 100%);
@@ -222,6 +224,44 @@ const GenreTag = styled.span`
   }
 `;
 
+const CollaborationText = styled.div`
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  @media screen and (max-width: 968px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const CollaborationLogo = styled.img`
+  height: 60px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 10px;
+  }
+`;
+
+const CollaborationContent = styled.div`
+`;
+
 const Hero = () => {
   const [podcastInfo, setPodcastInfo] = useState(null);
   const [spotifyInfo, setSpotifyInfo] = useState(null);
@@ -317,6 +357,39 @@ const Hero = () => {
               ))}
             </GenreTagsContainer>
           )}
+
+          <CollaborationText>
+            <CollaborationContent>
+              Developed in partnership with <span style={{fontWeight:'bold'}}>ASPIRE</span> (Alliance for Support and
+              Prevention of Immune-Related Adverse Events). <br/> Learn more through {" "}
+              <a
+                href="https://myconnection.asco.org/communities/community-home?CommunityKey=102ef19a-5b8d-4d67-8106-019388b78b2a"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                the ASCO Community
+              </a>
+              .
+            </CollaborationContent>
+            <CollaborationLogo src={AspireLogo} alt="ASPIRE Logo" />
+          </CollaborationText>
+
+          <CollaborationText>
+            <CollaborationContent>
+              Sponsored by <span style={{fontWeight:'bold'}}>Citrus Oncology</span>, a virtual specialty care platform
+              focused on improving outcomes for patients undergoing cancer
+              treatment. <br/> Learn more at {" "}
+              <a
+                href="https://www.citrusoncology.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                 citrusoncology.com
+              </a>
+              .
+            </CollaborationContent>
+            <CollaborationLogo src={CitrusLogo} alt="Citrus Oncology Logo" />
+          </CollaborationText>
         </RightColumn>
       </HeroContent>
     </HeroContainer>
