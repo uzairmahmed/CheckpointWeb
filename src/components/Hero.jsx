@@ -4,7 +4,7 @@ import { FaSpotify, FaApple, FaHeadphones } from "react-icons/fa";
 import { getPodcastInfo, getSpotifyPodcastInfo } from "../utils/api";
 import LogoImage from "../assets/logo1.svg";
 import AspireLogo from "../assets/aspire.svg";
-import CitrusLogo from "../assets/citrus.svg";
+import CitrusLogo from "../assets/stacked-01.svg";
 
 const HeroContainer = styled.div`
   background: linear-gradient(135deg, var(--light) 0%, var(--gray-100) 100%);
@@ -126,7 +126,6 @@ const HeroP = styled.p`
     props.description ? "clamp(1.1rem, 2vw, 1.3rem)" : "0.9rem"};
   max-width: ${(props) => (props.description ? "700px" : "600px")};
   line-height: ${(props) => (props.description ? "1.6" : "1.5")};
-  margin-bottom: ${(props) => (props.description ? "2rem" : "1rem")};
 `;
 
 const PlatformsWrapper = styled.div`
@@ -259,8 +258,7 @@ const CollaborationLogo = styled.img`
   }
 `;
 
-const CollaborationContent = styled.div`
-`;
+const CollaborationContent = styled.div``;
 
 const Hero = () => {
   const [podcastInfo, setPodcastInfo] = useState(null);
@@ -333,6 +331,20 @@ const Hero = () => {
               <span>Listen on Spotify</span>
             </PlatformItem>
           </PlatformsWrapper>
+
+          {podcastInfo?.genreIds && (
+            <GenreTagsContainer>
+              {podcastInfo.genres.map((genre, index) => (
+                <GenreTag key={index}>{genre}</GenreTag>
+              ))}
+            </GenreTagsContainer>
+          )}
+
+          {podcastInfo && (
+            <HeroP>
+              {`By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.trackCount} episodes`}
+            </HeroP>
+          )}
         </LeftColumn>
 
         <RightColumn>
@@ -344,29 +356,18 @@ const Hero = () => {
             diagnosis and management of immune related toxicities from cancer
             therapies straight from the experts in the field.
           </HeroP>
-          {podcastInfo && (
-            <HeroP>
-              {`By ${podcastInfo.artistName} • ${podcastInfo.primaryGenreName} • ${podcastInfo.trackCount} episodes`}
-            </HeroP>
-          )}
-
-          {podcastInfo?.genreIds && (
-            <GenreTagsContainer>
-              {podcastInfo.genres.map((genre, index) => (
-                <GenreTag key={index}>{genre}</GenreTag>
-              ))}
-            </GenreTagsContainer>
-          )}
 
           <CollaborationText>
             <CollaborationContent>
-              Developed in partnership with <span style={{fontWeight:'bold'}}>ASPIRE</span> (Alliance for Support and
-              Prevention of Immune-Related Adverse Events). <br/> Learn more through {" "}
+              Developed in partnership with{" "}
+              <span style={{ fontWeight: "bold" }}>ASPIRE</span> (Alliance for
+              Support and Prevention of Immune-Related Adverse Events). <br />{" "}
+              Learn more through{" "}
               <a
                 href="https://myconnection.asco.org/communities/community-home?CommunityKey=102ef19a-5b8d-4d67-8106-019388b78b2a"
                 target="_blank"
                 rel="noopener noreferrer"
-                >
+              >
                 the ASCO Community
               </a>
               .
@@ -376,15 +377,16 @@ const Hero = () => {
 
           <CollaborationText>
             <CollaborationContent>
-              Sponsored by <span style={{fontWeight:'bold'}}>Citrus Oncology</span>, a virtual specialty care platform
-              focused on improving outcomes for patients undergoing cancer
-              treatment. <br/> Learn more at {" "}
+              Sponsored by{" "}
+              <span style={{ fontWeight: "bold" }}>Citrus Oncology</span>, a
+              virtual specialty care platform focused on improving outcomes for
+              patients undergoing cancer treatment. <br /> Learn more at{" "}
               <a
                 href="https://www.citrusoncology.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >
-                 citrusoncology.com
+              >
+                citrusoncology.com
               </a>
               .
             </CollaborationContent>
